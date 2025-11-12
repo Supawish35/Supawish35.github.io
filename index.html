@@ -1,70 +1,165 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>My Profile Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #ffffff;
-            margin: 0;
-            padding: 0;
-        }
-        .profile-container {
-            max-width: 500px;
-            margin: 40px auto;
-            background: #3c58bc;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.09);
-            padding: 32px;
-            text-align: center;
-        }
-        .profile-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #3498db;
-            margin-bottom: 24px;
-        }
-        .profile-name {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #fff;
-            margin: 0;
-        }
-        .profile-bio {
-            font-size: 1.1rem;
-            color: #d4cccc;
-            margin: 16px 0 24px 0;
-        }
-        .profile-links a {
-            display: inline-block;
-            margin: 0 10px;
-            color: #abd9f7;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.2s;
-        }
-        .profile-links a:hover {
-            color: #63b7ee;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ใส่ชื่อของคุณ] - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="profile-container">
-        <img class="profile-avatar" src="profile.jpeg" alt="Profile Photo">
-        <h1 class="profile-name">Supawish35</h1>
-        <p class="profile-bio">
-            Hi! I'm a web developer passionate about building beautiful and functional web applications.<br>
-            I love coding, learning new things, and collaborating with others.
-        </p>
-        <div class="profile-links">
-            <a href="https://github.com/Supawish35" target="_blank" title="GitHub">GitHub</a>
+
+<nav>
+    <div class="container">
+        <a href="#profile" class="logo">[ชื่อของคุณ]</a>
+        <ul>
+            <li><a href="#profile">แนะนำตัว</a></li>
+            <li><a href="#skills">ทักษะ</a></li>
+            <li><a href="#projects">ผลงาน</a></li>
+            <li><a href="#education">การศึกษา</a></li>
+            <li><a href="#activities">กิจกรรม</a></li>
+            <li><a href="#contact">ติดต่อ</a></li>
+            <li><a href="#goals">เป้าหมาย</a></li>
+        </ul>
     </div>
+</nav>
+
+<main>
+    <section id="profile">
+        <div class="container">
+            <h2>Introduction</h2>
+            <div class="profile-content">
+                <img src="profile.jpeg" alt="รูปโปรไฟล์" class="profile-pic" id="profile-pic">
+                <div>
+                    <h3>นายศุภวิชญ์ หาญมนตรี</h3>
+                    <p><strong>สถานะ:</strong>นักศึกษาปีที่ 2</p>
+                    <p><strong>คณะ / มหาวิทยาลัย / สาขา:</strong> คณะวิทยาศาสตร์ มหาวิทยาลัยราชภัฏอุดรธานี สาขาวิทยาการคอมพิวเตอร์</p>
+                    <p><strong>ความสนใจ:</strong> AI, Web Dev, Data Science</p>
+                    <p>[ย่อหน้าแนะนำตัวสั้นๆ เกี่ยวกับตัวคุณ จุดประสงค์ของเว็บนี้...]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>ทักษะ (Skills)</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>C</li>
+                        <li>HTML/CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>AI & Data</h3>
+                    <ul>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>VS Code</li>
+                        <li>Jetbrains IDE</li>
+                        <li>Azure</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <ul>
+                        <li>การสื่อสาร</li>
+                        <li>การทำงานเป็นทีม</li>
+                        <li>การแก้ปัญหา</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x250" alt="รูปโปรเจกต์">
+                    <div class="project-content">
+                        <h3>[ชื่อโปรเจกต์ 1: เว็บไซต์ที่เคยพัฒนา]</h3>
+                        <p>[คำอธิบายสั้นๆ เกี่ยวกับโปรเจกต์นี้]</p>
+                        <a href="[ลิงก์ GitHub]" target="_blank">GitHub Repo</a>
+                        <a href="[ลิงก์ Demo]" target="_blank">Demo</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x250" alt="รูปโปรเจกต์">
+                    <div class="project-content">
+                        <h3>[ชื่อโปรเจกต์ 2: AI ทำนายโรค]</h3>
+                        <p>[คำอธิบายสั้นๆ เกี่ยวกับโปรเจกต์นี้]</p>
+                        <a href="[ลิงก์ GitHub]" target="_blank">GitHub Repo</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x250" alt="รูปโปรเจกต์">
+                    <div class="project-content">
+                        <h3>[ชื่อโปรเจกต์ 3: Dashboard ร้านกาแฟ]</h3>
+                        <p>[คำอธิบายสั้นๆ เกี่ยวกับโปรเจกต์นี้]</p>
+                        <a href="[ลิงก์ Demo]" target="_blank">Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>4. การศึกษา (Education)</h2>
+            <p><strong>[คณะ/สาขา]</strong></p>
+            <p>[มหาวิทยาลัยราชภัฏอุดรธานี]</p>
+            <p>[ช่วงปีการศึกษา เช่น 2563 - ปัจจุบัน]</p>
+        </div>
+    </section>
+
+    <section id="activities">
+        <div class="container">
+            <h2>Certificate</h2>
+            <p><strong>ปี 2567 - ปัจจุบัน:</strong> [อาจารย์เกียรติบัตร, โครงการแลกเปลี่ยน, หรือทุนการศึกษา (ถ้ามี)]</p>
+            <ul>
+                <li>เข้าร่วมอบรม "AI for Beginners by Microsoft" (2025)</li>
+                <li>เข้าร่วมแข่งขัน UDRU Hackathon 2025</li>
+                <li>ได้รับรางวัลชมเชยโครงงานด้าน IoT</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>6. ติดต่อ (Contact)</h2>
+            <p>คุณสามารถติดต่อฉันได้ผ่านช่องทางต่อไปนี้:</p>
+            <ul>
+                <li><strong>Email:</strong> [your.email@gmail.com]</li>
+                <li><strong>GitHub:</strong> <a href="[ลิงก์ GitHub ของคุณ]" target="_blank">[ชื่อ GitHub]</a></li>
+                <li><strong>LinkedIn:</strong> <a href="[ลิงก์ LinkedIn ของคุณ]" target="_blank">[ชื่อ LinkedIn]</a></li>
+                <li><strong>Facebook:</strong> <a href="[ลิงก์ Facebook ของคุณ]" target="_blank">[ชื่อ Facebook]</a></li>
+            </ul>
+            <p><strong>ที่อยู่:</strong> [จังหวัด (ไม่จำเป็นต้องละเอียด)]</p>
+        </div>
+    </section>
+
+    <section id="goals">
+        <div class="container">
+            <h2>7. องค์ประกอบเสริม (Career Interest)</h2>
+            <p>[เขียนเป้าหมายในอนาคต หรือสายงานที่สนใจ เช่น "ฉันมีความมุ่งมั่นที่จะเป็น Data Scientist ที่สามารถนำข้อมูลมาสร้างประโยชน์..."]</p>
+        </div>
+    </section>
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
-
-
