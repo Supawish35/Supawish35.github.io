@@ -152,6 +152,7 @@ main {
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
+    object-position: 50% 10%;
     border: 5px solid #007bff;
 }
 
@@ -182,10 +183,6 @@ main {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     overflow: hidden; /* สำหรับรูปภาพ */
     transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
 }
 
 .project-card img {
