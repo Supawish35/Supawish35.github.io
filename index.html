@@ -14,16 +14,16 @@
 <body>
 
 <nav>
-    <div class="container">
+    <div class="container navbar">
         <a href="#profile" class="logo">Supphawit's Portfolio</a>
         <ul>
-            <li><a href="#profile">แนะนำตัว</a></li>
-            <li><a href="#skills">ทักษะ</a></li>
-            <li><a href="#projects">ผลงาน</a></li>
-            <li><a href="#education">การศึกษา</a></li>
-            <li><a href="#activities">กิจกรรม</a></li>
-            <li><a href="#contact">ติดต่อ</a></li>
-            <li><a href="#goals">เป้าหมาย</a></li>
+            <li><a href="#profile" class="nav-item ">แนะนำตัว</a></li>
+            <li><a href="#skills" class="nav-item">ทักษะ</a></li>
+            <li><a href="#projects" class="nav-item">ผลงาน</a></li>
+            <li><a href="#education" class="nav-item">การศึกษา</a></li>
+            <li><a href="#activities" class="nav-item">กิจกรรม</a></li>
+            <li><a href="#contact" class="nav-item">ติดต่อ</a></li>
+            <li><a href="#goals" class="nav-item">เป้าหมาย</a></li>
         </ul>
     </div>
 </nav>
@@ -40,8 +40,6 @@
                     <p><strong>คณะ / มหาวิทยาลัย / สาขา:</strong> คณะวิทยาศาสตร์ มหาวิทยาลัยราชภัฏอุดรธานี
                         สาขาวิทยาการคอมพิวเตอร์</p>
                     <p><strong>ความสนใจ:</strong> AI, Web Dev, Data Science</p>
-                    <p>[ย่อหน้าแนะนำตัวสั้นๆ เกี่ยวกับตัวคุณ จุดประสงค์ของเว็บนี้...]
-                    </p>
                 </div>
             </div>
         </div>
@@ -91,29 +89,13 @@
     <section id="projects">
         <div class="container">
             <h2>Projects</h2>
-            <div class="project-grid">
+            <div class="project-grid ">
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/400x250" alt="รูปโปรเจกต์">
+                    <img src="pop-siam.png" alt="รูปโปรเจกต์">
                     <div class="project-content">
                         <h3>Pop-siam</h3>
                         <p>เป็นโปรเจ็คที่สร้างเพื่อศึกษาการใช้งาน web socket</p>
                         <a href="https://github.com/Supawish35/Pop-siam" target="_blank">GitHub Repo</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x250" alt="รูปโปรเจกต์">
-                    <div class="project-content">
-                        <h3>[ชื่อโปรเจกต์ 2: AI ทำนายโรค]</h3>
-                        <p>[คำอธิบายสั้นๆ เกี่ยวกับโปรเจกต์นี้]</p>
-                        <a href="[ลิงก์ GitHub]" target="_blank">GitHub Repo</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x250" alt="รูปโปรเจกต์">
-                    <div class="project-content">
-                        <h3>[ชื่อโปรเจกต์ 3: Dashboard ร้านกาแฟ]</h3>
-                        <p>[คำอธิบายสั้นๆ เกี่ยวกับโปรเจกต์นี้]</p>
-                        <a href="[ลิงก์ Demo]" target="_blank">Demo</a>
                     </div>
                 </div>
             </div>
@@ -123,9 +105,23 @@
     <section id="education">
         <div class="container">
             <h2>4. การศึกษา (Education)</h2>
-            <p><strong>[คณะ/สาขา]</strong></p>
-            <p>[มหาวิทยาลัยราชภัฏอุดรธานี]</p>
-            <p>[ช่วงปีการศึกษา เช่น 2563 - ปัจจุบัน]</p>
+            <div class="project-grid ">
+                <div class="card p-3">
+                    <p><strong>ระดับชั้นประถมศึกษา</strong></p>
+                    <p>โรงเรียนบ้านดงเสียด</p>
+                    <p>ช่วงปีการศึกษา 2554-2560</p>
+                </div>
+                <div class="card p-3">
+                    <p><strong>ระดับมัธยมศึกษา</strong></p>
+                    <p>โรงเรียนพรเจริญวิทยา</p>
+                    <p>ช่วงปีการศึกษา 2560-2567</p>
+                </div>
+                <div class="card p-3">
+                    <p><strong>คณะวิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์</strong></p>
+                    <p>มหาวิทยาลัยราชภัฏอุดรธานี</p>
+                    <p>ช่วงปีการศึกษา 2567 - ปัจจุบัน</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -157,8 +153,7 @@
     <section id="goals">
         <div class="container">
             <h2>7. องค์ประกอบเสริม (Career Interest)</h2>
-            <p>[เขียนเป้าหมายในอนาคต หรือสายงานที่สนใจ เช่น "ฉันมีความมุ่งมั่นที่จะเป็น Data Scientist
-                ที่สามารถนำข้อมูลมาสร้างประโยชน์..."]</p>
+            <p>ฉันมีความมุ่งมั่นที่จะเป็น Data Scientist ที่สามารถนำข้อมูลมาสร้างประโยชน์ได้</p>
         </div>
     </section>
 </main>
