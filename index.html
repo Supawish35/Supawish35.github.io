@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[ใส่ชื่อของคุณ] - Portfolio</title>
+    <title>Supphawit's Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
 
 <nav>
     <div class="container">
-        <a href="#profile" class="logo">[ชื่อของคุณ]</a>
+        <a href="#profile" class="logo">Supphawit's Portfolio</a>
         <ul>
             <li><a href="#profile">แนะนำตัว</a></li>
             <li><a href="#skills">ทักษะ</a></li>
@@ -35,7 +37,8 @@
                 <div>
                     <h3>นายศุภวิชญ์ หาญมนตรี</h3>
                     <p><strong>สถานะ:</strong>นักศึกษาปีที่ 2</p>
-                    <p><strong>คณะ / มหาวิทยาลัย / สาขา:</strong> คณะวิทยาศาสตร์ มหาวิทยาลัยราชภัฏอุดรธานี สาขาวิทยาการคอมพิวเตอร์</p>
+                    <p><strong>คณะ / มหาวิทยาลัย / สาขา:</strong> คณะวิทยาศาสตร์ มหาวิทยาลัยราชภัฏอุดรธานี
+                        สาขาวิทยาการคอมพิวเตอร์</p>
                     <p><strong>ความสนใจ:</strong> AI, Web Dev, Data Science</p>
                     <p>[ย่อหน้าแนะนำตัวสั้นๆ เกี่ยวกับตัวคุณ จุดประสงค์ของเว็บนี้...]
                     </p>
@@ -55,6 +58,7 @@
                         <li>C</li>
                         <li>HTML/CSS</li>
                         <li>JavaScript</li>
+                        <li>PHP</li>
                     </ul>
                 </div>
                 <div class="skill-category">
@@ -91,10 +95,9 @@
                 <div class="project-card">
                     <img src="https://via.placeholder.com/400x250" alt="รูปโปรเจกต์">
                     <div class="project-content">
-                        <h3>[ชื่อโปรเจกต์ 1: เว็บไซต์ที่เคยพัฒนา]</h3>
-                        <p>[คำอธิบายสั้นๆ เกี่ยวกับโปรเจกต์นี้]</p>
-                        <a href="[ลิงก์ GitHub]" target="_blank">GitHub Repo</a>
-                        <a href="[ลิงก์ Demo]" target="_blank">Demo</a>
+                        <h3>Pop-siam</h3>
+                        <p>เป็นโปรเจ็คที่สร้างเพื่อศึกษาการใช้งาน web socket</p>
+                        <a href="https://github.com/Supawish35/Pop-siam" target="_blank">GitHub Repo</a>
                     </div>
                 </div>
                 <div class="project-card">
@@ -129,12 +132,12 @@
     <section id="activities">
         <div class="container">
             <h2>Certificate</h2>
-            <p><strong>ปี 2567 - ปัจจุบัน:</strong> [อาจารย์เกียรติบัตร, โครงการแลกเปลี่ยน, หรือทุนการศึกษา (ถ้ามี)]</p>
-            <ul>
-                <li>เข้าร่วมอบรม "AI for Beginners by Microsoft" (2025)</li>
-                <li>เข้าร่วมแข่งขัน UDRU Hackathon 2025</li>
-                <li>ได้รับรางวัลชมเชยโครงงานด้าน IoT</li>
-            </ul>
+            <div class="d-flex justify-content-center pt-3">
+                <div class="embed-responsive embed-responsive-4by3 ">
+                    <embed src="UDRU-ET_B2_Set1.pdf" alt="รูปโปรเจกต์" style="object-fit: cover"
+                           class="embed-responsive-item">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -143,23 +146,26 @@
             <h2>6. ติดต่อ (Contact)</h2>
             <p>คุณสามารถติดต่อฉันได้ผ่านช่องทางต่อไปนี้:</p>
             <ul>
-                <li><strong>Email:</strong> [your.email@gmail.com]</li>
-                <li><strong>GitHub:</strong> <a href="[ลิงก์ GitHub ของคุณ]" target="_blank">[ชื่อ GitHub]</a></li>
-                <li><strong>LinkedIn:</strong> <a href="[ลิงก์ LinkedIn ของคุณ]" target="_blank">[ชื่อ LinkedIn]</a></li>
-                <li><strong>Facebook:</strong> <a href="[ลิงก์ Facebook ของคุณ]" target="_blank">[ชื่อ Facebook]</a></li>
+                <li><strong>Email:</strong> supawish35@gmail.com</li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/Supawish35" target="_blank">Supawish35</a></li>
+                <li><strong>Facebook:</strong> <a href="https://www.facebook.com/" target="_blank">Supawish Hanmontree</a></li>
             </ul>
-            <p><strong>ที่อยู่:</strong> [จังหวัด (ไม่จำเป็นต้องละเอียด)]</p>
+            <p><strong>ที่อยู่:</strong> ต.ศรีชมภู อ.พรเจริญ จ.บึงกาฬ</p>
         </div>
     </section>
 
     <section id="goals">
         <div class="container">
             <h2>7. องค์ประกอบเสริม (Career Interest)</h2>
-            <p>[เขียนเป้าหมายในอนาคต หรือสายงานที่สนใจ เช่น "ฉันมีความมุ่งมั่นที่จะเป็น Data Scientist ที่สามารถนำข้อมูลมาสร้างประโยชน์..."]</p>
+            <p>[เขียนเป้าหมายในอนาคต หรือสายงานที่สนใจ เช่น "ฉันมีความมุ่งมั่นที่จะเป็น Data Scientist
+                ที่สามารถนำข้อมูลมาสร้างประโยชน์..."]</p>
         </div>
     </section>
 </main>
 
 <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 </html>
