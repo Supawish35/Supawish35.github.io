@@ -1,0 +1,116 @@
+:root, [data-bs-theme="light"] {
+    --bs-body-font-family: 'Poppins', 'Sarabun', sans-serif;
+    --bs-primary: #6f42c1;
+    --bs-secondary: #f8f9fa;
+    --bs-dark: #212529;
+    --bs-light: #f8f9fa;
+    --bs-body-bg: #f8f9fa;
+    --bs-body-color: #212529;
+    --card-bg: #ffffff;
+}
+
+[data-bs-theme="dark"] {
+    --bs-primary: #8a63d2;
+    --bs-secondary: #1c1c1d;
+    --bs-dark: #f8f9fa;
+    --bs-light: #212529;
+    --bs-body-bg: #121212;
+    --bs-body-color: #f8f9fa;
+    --card-bg: rgb(37, 39, 40);
+}
+
+body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+.navbar {
+    background-color: rgba(var(--bs-body-bg-rgb), 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero {
+    background: url('https://images.unsplash.com/photo-1522252234503-e356532cafd5?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-weight: 700;
+    font-size: 3.5rem;
+}
+
+.hero h1, .hero p {
+    text-shadow: 0 10px 15px rgba(0, 0, 0, 0.7);
+}
+
+.text-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.section {
+    padding: 60px 0;
+}
+
+.section.bg-light {
+    background-color: var(--bs-secondary) !important;
+}
+.section {
+    background-color: var(--bs-secondary) !important;
+}
+.card {
+    border: none;
+    box-shadow: 0 4px 12px rgba(79, 73, 73, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: var(--card-bg);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.form-switch .form-check-input {
+    width: 3em;
+    height: 1.5em;
+    cursor: pointer;
+}
+
+.btn-facebook{
+    background: rgb(8, 101, 253);
+}
+
+.btn-facebook:hover{
+    background: rgb(36, 118, 252);
+}
+
+.footer{
+    background-color: rgba(var(--bs-body-bg-rgb), 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
