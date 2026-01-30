@@ -210,7 +210,7 @@
     const themeIcon = themeSwitcher.querySelector('i');
 
     // Set initial theme
-    const currentTheme = localStorage.getItem('theme') || 'dark';
+    const currentTheme = localStorage.getItem('theme') || 'light';
     html.setAttribute('data-bs-theme', currentTheme);
     updateIcon(currentTheme);
 
