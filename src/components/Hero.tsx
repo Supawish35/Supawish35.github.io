@@ -26,7 +26,6 @@ export const Hero: React.FC = () => {
           
           {/* Main Info */}
           <div className="flex-1 text-center md:text-left">
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 font-heading mb-4 leading-tight">
               {name}
             </h1>
@@ -43,7 +42,7 @@ export const Hero: React.FC = () => {
               {interests.map((interest) => (
                 <span
                   key={interest}
-                  className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium bg-zinc-100 dark:bg-zinc-800/90 text-zinc-700 dark:text-zinc-300 border border-zinc-200/60 dark:border-zinc-700/60"
+                  className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-700/80 transition-colors hover:border-zinc-300 dark:hover:border-zinc-600"
                 >
                   {interest}
                 </span>

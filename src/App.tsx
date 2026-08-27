@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from './hooks/useTheme';
 import { LanguageProvider } from './context/LanguageContext';
+import { BackgroundEffects } from './components/BackgroundEffects';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Skills } from './components/Skills';
@@ -16,9 +17,15 @@ const AppContent: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="min-h-screen flex flex-col bg-body-light dark:bg-body-dark text-typography-light dark:text-typography-dark transition-colors duration-300 font-sans selection:bg-brand-500/20 selection:text-brand-600 dark:selection:text-brand-300">
+    <div className="relative min-h-screen flex flex-col bg-body-light dark:bg-body-dark text-typography-light dark:text-typography-dark transition-colors duration-300 font-sans selection:bg-brand-500/20 selection:text-brand-600 dark:selection:text-brand-300">
+      {/* Dynamic Ambient Background */}
+      <BackgroundEffects />
+
+      {/* Navigation */}
       <Navbar theme={theme} onToggleTheme={toggleTheme} />
-      <main className="flex-grow">
+
+      {/* Main Content Sections */}
+      <main className="relative z-10 flex-grow">
         <Hero />
         <Skills />
         <Projects />
@@ -27,7 +34,11 @@ const AppContent: React.FC = () => {
         <Goals />
         <Contact />
       </main>
-      <Footer />
+
+      {/* Footer & Floating Controls */}
+      <div className="relative z-10">
+        <Footer />
+      </div>
       <ScrollToTop />
     </div>
   );

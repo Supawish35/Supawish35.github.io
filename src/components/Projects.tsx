@@ -17,7 +17,7 @@ export const Projects: React.FC = () => {
   const { projects } = t.portfolioData;
 
   return (
-    <section id="projects" className="py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/50 transition-colors duration-200">
+    <section id="projects" className="py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/60 dark:bg-zinc-900/30 transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-14">

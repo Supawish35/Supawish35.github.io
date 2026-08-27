@@ -5,7 +5,7 @@ export const Footer: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="border-t border-zinc-200/80 dark:border-zinc-800/80 py-12 bg-white dark:bg-zinc-950 transition-colors duration-200">
+    <footer className="border-t border-zinc-200/60 dark:border-zinc-800/60 py-12 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-md transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-zinc-500 dark:text-zinc-400">

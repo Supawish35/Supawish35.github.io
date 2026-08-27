@@ -51,6 +51,44 @@ export default {
         'card-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04)',
         'card-dark': '0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2)',
         'card-dark-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3)',
+        'glow-brand': '0 0 50px -10px rgba(37, 99, 235, 0.3)',
+      },
+      animation: {
+        'blob': 'blob 14s infinite ease-in-out',
+        'blob-slow': 'blob 22s infinite ease-in-out',
+        'float-slow': 'float 8s ease-in-out infinite',
+        'pulse-slow': 'pulseGlow 6s ease-in-out infinite',
+      },
+      keyframes: {
+        blob: {
+          '0%, 100%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+          '33%': {
+            transform: 'translate(30px, -40px) scale(1.1)',
+          },
+          '66%': {
+            transform: 'translate(-20px, 20px) scale(0.95)',
+          },
+        },
+        float: {
+          '0%, 100%': {
+            transform: 'translateY(0px)',
+          },
+          '50%': {
+            transform: 'translateY(-12px)',
+          },
+        },
+        pulseGlow: {
+          '0%, 100%': {
+            opacity: '0.4',
+            transform: 'scale(1)',
+          },
+          '50%': {
+            opacity: '0.7',
+            transform: 'scale(1.08)',
+          },
+        },
       },
     },
   },

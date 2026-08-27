@@ -34,7 +34,7 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white dark:bg-zinc-900/50 transition-colors duration-200">
+    <section id="contact" className="py-24 bg-white/60 dark:bg-zinc-900/30 transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
         {/* Section Header */}
         <div className="mb-14">

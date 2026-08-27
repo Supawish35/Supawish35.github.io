@@ -7,7 +7,7 @@ export const Goals: React.FC = () => {
   const { careerInterest } = t.portfolioData;
 
   return (
-    <section id="goals" className="py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-950/50 transition-colors duration-200">
+    <section id="goals" className="py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-950/40 transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white dark:bg-zinc-900 p-8 sm:p-12 rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-card dark:shadow-card-dark">
           <div className="flex items-center gap-3.5 mb-5">

@@ -29,7 +29,7 @@ export const Certificates: React.FC = () => {
   }, [selectedCert]);
 
   return (
-    <section id="activities" className="py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/50 transition-colors duration-200">
+    <section id="activities" className="py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/60 dark:bg-zinc-900/30 transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-14">
@@ -85,7 +85,7 @@ export const Certificates: React.FC = () => {
           aria-modal="true"
         >
           <div
-            className="relative max-w-4xl w-full bg-white dark:bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-zinc-800 p-5 sm:p-7 flex flex-col items-center"
+            className="relative max-w-4xl w-full bg-white dark:bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-zinc-800 p-5 sm:p-7 flex flex-col items-center animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
