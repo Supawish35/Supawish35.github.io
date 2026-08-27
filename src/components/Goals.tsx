@@ -1,9 +1,10 @@
 import React from 'react';
 import { Target } from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Goals: React.FC = () => {
-  const { careerInterest } = portfolioData;
+  const { t } = useLanguage();
+  const { careerInterest } = t.portfolioData;
 
   return (
     <section id="goals" className="py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-950/50 transition-colors duration-200">
@@ -14,7 +15,7 @@ export const Goals: React.FC = () => {
               <Target className="w-6 h-6 text-brand" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight font-heading text-zinc-900 dark:text-zinc-100">
-              เป้าหมายในสายอาชีพ (Career Interest)
+              {t.ui.goals.sectionTitle}
             </h2>
           </div>
 

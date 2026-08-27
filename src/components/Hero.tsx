@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowDown, ArrowUpRight, Mail } from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
 
 const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -13,7 +13,8 @@ const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' })
 );
 
 export const Hero: React.FC = () => {
-  const { name, role, interests, avatar, contacts } = portfolioData;
+  const { t } = useLanguage();
+  const { name, role, interests, avatar, contacts } = t.portfolioData;
 
   const githubContact = contacts.find((c) => c.type === 'github');
   const emailContact = contacts.find((c) => c.type === 'email');
@@ -37,7 +38,7 @@ export const Hero: React.FC = () => {
             {/* Interests Chips */}
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-9">
               <span className="text-xs sm:text-sm font-medium text-zinc-400 dark:text-zinc-500 mr-1">
-                สนใจ:
+                {t.ui.hero.interestsLabel}
               </span>
               {interests.map((interest) => (
                 <span
@@ -55,7 +56,7 @@ export const Hero: React.FC = () => {
                 href="#projects"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-100 dark:hover:bg-white text-white dark:text-zinc-900 font-semibold text-sm sm:text-base transition-colors shadow-sm active:scale-95"
               >
-                <span>ดูผลงานโปรเจกต์</span>
+                <span>{t.ui.hero.viewProjects}</span>
                 <ArrowDown className="w-4 h-4" />
               </a>
 
@@ -78,7 +79,7 @@ export const Hero: React.FC = () => {
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-semibold text-sm sm:text-base border border-zinc-200 dark:border-zinc-800 transition-colors shadow-subtle active:scale-95"
                 >
                   <Mail className="w-4 h-4 text-zinc-500" />
-                  <span>ติดต่อ</span>
+                  <span>{t.ui.hero.contact}</span>
                 </a>
               )}
             </div>

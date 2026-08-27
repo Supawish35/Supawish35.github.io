@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Award, X, Maximize2 } from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
 import { CertificateItem } from '../types';
 
 export const Certificates: React.FC = () => {
-  const { certificates } = portfolioData;
+  const { t } = useLanguage();
+  const { certificates } = t.portfolioData;
   const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
 
   useEffect(() => {
@@ -33,10 +34,10 @@ export const Certificates: React.FC = () => {
         {/* Section Header */}
         <div className="mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-zinc-900 dark:text-zinc-100 mb-3">
-            ใบรับรอง (Certificates)
+            {t.ui.certificates.sectionTitle}
           </h2>
           <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
-            ใบรับรองความสามารถและการทดสอบ
+            {t.ui.certificates.sectionSubtitle}
           </p>
         </div>
 
@@ -58,7 +59,7 @@ export const Certificates: React.FC = () => {
                 <div className="absolute inset-0 bg-zinc-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
                   <span className="px-4 py-2 rounded-xl bg-white/95 dark:bg-zinc-900/95 text-zinc-900 dark:text-white shadow-md flex items-center gap-2 text-xs sm:text-sm font-medium">
                     <Maximize2 className="w-4 h-4" />
-                    <span>ดูภาพเต็ม</span>
+                    <span>{t.ui.certificates.viewFull}</span>
                   </span>
                 </div>
               </div>

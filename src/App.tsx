@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from './hooks/useTheme';
+import { LanguageProvider } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Skills } from './components/Skills';
@@ -11,7 +12,7 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 
-export const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -29,6 +30,14 @@ export const App: React.FC = () => {
       <Footer />
       <ScrollToTop />
     </div>
+  );
+};
+
+export const App: React.FC = () => {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 };
 

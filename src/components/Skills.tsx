@@ -1,6 +1,6 @@
 import React from 'react';
 import { Code2, Cpu, Wrench, Users } from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
 
 const iconMap = {
   braces: Code2,
@@ -10,7 +10,8 @@ const iconMap = {
 };
 
 export const Skills: React.FC = () => {
-  const { skills } = portfolioData;
+  const { t } = useLanguage();
+  const { skills } = t.portfolioData;
 
   const parseSkillTags = (items: string[]) => {
     return items.flatMap((item) =>
@@ -24,10 +25,10 @@ export const Skills: React.FC = () => {
         {/* Section Header */}
         <div className="mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-zinc-900 dark:text-zinc-100 mb-3">
-            ทักษะความสามารถ (Skills)
+            {t.ui.skills.sectionTitle}
           </h2>
           <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
-            ภาษาโปรแกรมมิ่ง เครื่องมือ และทักษะที่ใช้ในการทำงาน
+            {t.ui.skills.sectionSubtitle}
           </p>
         </div>
 

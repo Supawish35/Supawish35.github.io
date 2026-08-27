@@ -1,9 +1,10 @@
 import React from 'react';
 import { GraduationCap } from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Education: React.FC = () => {
-  const { education } = portfolioData;
+  const { t } = useLanguage();
+  const { education } = t.portfolioData;
 
   return (
     <section id="education" className="py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-950/50 transition-colors duration-200">
@@ -11,10 +12,10 @@ export const Education: React.FC = () => {
         {/* Section Header */}
         <div className="mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-zinc-900 dark:text-zinc-100 mb-3">
-            ประวัติการศึกษา (Education)
+            {t.ui.education.sectionTitle}
           </h2>
           <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
-            วุฒิการศึกษาและสถาบัน
+            {t.ui.education.sectionSubtitle}
           </p>
         </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Copy, Check, ExternalLink } from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
 
 const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -19,7 +19,8 @@ const FacebookIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' 
 );
 
 export const Contact: React.FC = () => {
-  const { contacts } = portfolioData;
+  const { t } = useLanguage();
+  const { contacts } = t.portfolioData;
   const [copied, setCopied] = useState(false);
 
   const emailContact = contacts.find((c) => c.type === 'email');
@@ -38,10 +39,10 @@ export const Contact: React.FC = () => {
         {/* Section Header */}
         <div className="mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-zinc-900 dark:text-zinc-100 mb-3">
-            ติดต่อ (Contact)
+            {t.ui.contact.sectionTitle}
           </h2>
           <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
-            สามารถติดต่อพูดคุย หรือส่งอีเมลมาได้ตลอดเวลา
+            {t.ui.contact.sectionSubtitle}
           </p>
         </div>
 
@@ -66,13 +67,13 @@ export const Contact: React.FC = () => {
                 href={`mailto:${emailAddress}`}
                 className="flex-1 py-2 px-4 rounded-xl bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-100 dark:hover:bg-white text-white dark:text-zinc-900 text-sm font-semibold transition-colors text-center"
               >
-                ส่งอีเมล
+                {t.ui.contact.sendEmail}
               </a>
               <button
                 onClick={handleCopyEmail}
                 className="p-2 rounded-xl bg-zinc-200/70 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 transition-colors"
-                title="คัดลอกอีเมล"
-                aria-label="Copy email address"
+                title={t.ui.contact.copyEmail}
+                aria-label={t.ui.contact.copyEmail}
               >
                 {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
               </button>
@@ -100,7 +101,7 @@ export const Contact: React.FC = () => {
               </div>
 
               <div className="flex items-center justify-between pt-3 border-t border-zinc-200/60 dark:border-zinc-800 text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-brand">
-                <span>เปิดดู GitHub</span>
+                <span>{t.ui.contact.openGithub}</span>
                 <ExternalLink className="w-4 h-4" />
               </div>
             </a>
@@ -127,7 +128,7 @@ export const Contact: React.FC = () => {
               </div>
 
               <div className="flex items-center justify-between pt-3 border-t border-zinc-200/60 dark:border-zinc-800 text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-brand">
-                <span>ส่งข้อความ</span>
+                <span>{t.ui.contact.sendMessage}</span>
                 <ExternalLink className="w-4 h-4" />
               </div>
             </a>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X } from 'lucide-react';
-import { navItems } from '../data/portfolioData';
+import { Sun, Moon, Menu, X, Languages } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface NavbarProps {
   theme: 'light' | 'dark';
@@ -8,6 +8,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
+  const { language, toggleLanguage, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -37,9 +38,9 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
             Supphawit<span className="text-brand font-mono font-normal text-sm ml-0.5">.dev</span>
           </a>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links & Controls */}
           <div className="hidden md:flex items-center space-x-1 sm:space-x-2">
-            {navItems.map((item) => (
+            {t.navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
@@ -49,11 +50,24 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
               </a>
             ))}
 
+            {/* Language Switcher Button */}
+            <button
+              onClick={toggleLanguage}
+              aria-label={t.ui.navbar.switchLanguage}
+              title={language === 'th' ? 'Switch to English' : 'เปลี่ยนเป็นภาษาไทย'}
+              className="ml-2 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-zinc-800/90 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all border border-zinc-200/80 dark:border-zinc-700/80 active:scale-95"
+            >
+              <Languages className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" />
+              <span className="font-mono tracking-wider uppercase font-bold">
+                {language === 'th' ? 'EN' : 'TH'}
+              </span>
+            </button>
+
             {/* Theme Toggle Button */}
             <button
               onClick={onToggleTheme}
-              aria-label="Toggle theme"
-              className="ml-2 p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors focus:outline-none"
+              aria-label={t.ui.navbar.toggleTheme}
+              className="p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors focus:outline-none"
             >
               {theme === 'dark' ? (
                 <Moon className="w-4 h-4" />
@@ -64,17 +78,31 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
           </div>
 
           {/* Mobile Navigation Controls */}
-          <div className="flex md:hidden items-center space-x-1.5">
+          <div className="flex md:hidden items-center space-x-1 sm:space-x-1.5">
+            {/* Mobile Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              aria-label={t.ui.navbar.switchLanguage}
+              title={language === 'th' ? 'Switch to English' : 'เปลี่ยนเป็นภาษาไทย'}
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-700/80 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+            >
+              <Languages className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" />
+              <span className="font-mono">{language === 'th' ? 'EN' : 'TH'}</span>
+            </button>
+
+            {/* Mobile Theme Switcher */}
             <button
               onClick={onToggleTheme}
-              aria-label="Toggle theme"
+              aria-label={t.ui.navbar.toggleTheme}
               className="p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               {theme === 'dark' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
+
+            {/* Mobile Menu Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle navigation menu"
+              aria-label={t.ui.navbar.toggleMenu}
               className="p-2 rounded-lg text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -86,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden mt-2 mx-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-lg p-2.5 space-y-1 shadow-lg animate-in slide-in-from-top-2 duration-150">
-          {navItems.map((item) => (
+          {t.navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}

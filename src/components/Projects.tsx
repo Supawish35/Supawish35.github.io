@@ -1,6 +1,6 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
 
 const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -13,7 +13,8 @@ const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' })
 );
 
 export const Projects: React.FC = () => {
-  const { projects } = portfolioData;
+  const { t } = useLanguage();
+  const { projects } = t.portfolioData;
 
   return (
     <section id="projects" className="py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/50 transition-colors duration-200">
@@ -21,10 +22,10 @@ export const Projects: React.FC = () => {
         {/* Section Header */}
         <div className="mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-zinc-900 dark:text-zinc-100 mb-3">
-            ผลงาน (Projects)
+            {t.ui.projects.sectionTitle}
           </h2>
           <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
-            โปรเจกต์และแอปพลิเคชันที่พัฒนาขึ้น
+            {t.ui.projects.sectionSubtitle}
           </p>
         </div>
 
@@ -62,7 +63,7 @@ export const Projects: React.FC = () => {
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 font-semibold text-xs sm:text-sm transition-colors"
                   >
                     <GithubIcon className="w-4 h-4" />
-                    <span>Source Code</span>
+                    <span>{t.ui.projects.sourceCode}</span>
                   </a>
 
                   {project.demoUrl && (
@@ -73,7 +74,7 @@ export const Projects: React.FC = () => {
                       className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand hover:bg-brand-600 text-white font-semibold text-xs sm:text-sm transition-colors shadow-sm"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      <span>Live Demo</span>
+                      <span>{t.ui.projects.liveDemo}</span>
                     </a>
                   )}
                 </div>
