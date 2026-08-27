@@ -6,28 +6,43 @@ export const Education: React.FC = () => {
   const { education } = portfolioData;
 
   return (
-    <section id="education" className="py-20 bg-subtle-light dark:bg-subtle-dark transition-colors duration-300">
+    <section id="education" className="py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-950/50 transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-12 tracking-tight text-typography-light dark:text-typography-dark">
-          การศึกษา (Education)
-        </h2>
+        {/* Section Header */}
+        <div className="mb-14">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-zinc-900 dark:text-zinc-100 mb-3">
+            ประวัติการศึกษา (Education)
+          </h2>
+          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
+            วุฒิการศึกษาและสถาบัน
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Education List */}
+        <div className="space-y-4">
           {education.map((item, idx) => (
             <div
               key={idx}
-              className="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl shadow-card dark:shadow-card-dark border border-black/5 dark:border-white/5 hover:-translate-y-2 hover:shadow-card-hover dark:hover:shadow-card-dark-hover transition-all duration-300 flex flex-col justify-between"
+              className="bg-white dark:bg-zinc-900 p-6 sm:p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-card dark:shadow-card-dark flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
             >
-              <div>
-                <div className="w-10 h-10 rounded-xl bg-brand/10 dark:bg-brand-dark/10 text-brand dark:text-brand-dark flex items-center justify-center mb-4">
-                  <GraduationCap className="w-5 h-5" />
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex-shrink-0 mt-0.5 sm:mt-0">
+                  <GraduationCap className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-typography-light dark:text-typography-dark">
-                  {item.degree}
-                </h3>
-                <p className="text-sm text-typography-light/70 dark:text-typography-dark/70 leading-relaxed">
-                  {item.institution} ({item.years})
-                </p>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold font-heading text-zinc-900 dark:text-zinc-100">
+                    {item.degree}
+                  </h3>
+                  <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mt-0.5">
+                    {item.institution}
+                  </p>
+                </div>
+              </div>
+
+              <div className="sm:text-right pl-14 sm:pl-0">
+                <span className="inline-block px-3 py-1 rounded-lg text-xs sm:text-sm font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+                  {item.years}
+                </span>
               </div>
             </div>
           ))}
@@ -36,4 +51,3 @@ export const Education: React.FC = () => {
     </section>
   );
 };
-

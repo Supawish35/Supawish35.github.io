@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { navItems } from '../data/portfolioData';
 
@@ -9,26 +9,41 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-body-light/90 dark:bg-body-dark/90 backdrop-blur-md border-b border-black/5 dark:border-white/10 shadow-sm transition-colors duration-300">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        scrolled
+          ? 'py-3.5 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200/80 dark:border-zinc-800/80 shadow-subtle'
+          : 'py-5 bg-transparent'
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Brand */}
+        <div className="flex items-center justify-between">
+          {/* Brand Logo */}
           <a
             href="#"
-            className="text-xl font-bold tracking-tight text-brand dark:text-brand-dark transition-colors duration-200"
+            className="text-base sm:text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100 hover:opacity-80 transition-opacity"
           >
-            Supphawit's Portfolio
+            Supphawit<span className="text-brand font-mono font-normal text-sm ml-0.5">.dev</span>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          <div className="hidden md:flex items-center space-x-1 sm:space-x-2">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="px-3 py-2 rounded-lg text-sm font-medium text-typography-light/80 hover:text-brand dark:text-typography-dark/80 dark:hover:text-brand-dark transition-colors duration-200"
+                className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 transition-colors"
               >
                 {item.label}
               </a>
@@ -38,35 +53,31 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
             <button
               onClick={onToggleTheme}
               aria-label="Toggle theme"
-              className="ml-3 p-2 rounded-lg text-typography-light/80 hover:text-brand dark:text-typography-dark/80 dark:hover:text-brand-dark hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-200"
+              className="ml-2 p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors focus:outline-none"
             >
               {theme === 'dark' ? (
-                <Moon className="w-5 h-5 text-brand-dark animate-in spin-in-180 duration-300" />
+                <Moon className="w-4 h-4" />
               ) : (
-                <Sun className="w-5 h-5 text-amber-500 animate-in spin-in-180 duration-300" />
+                <Sun className="w-4 h-4" />
               )}
             </button>
           </div>
 
-          {/* Mobile Menu & Theme Toggle Buttons */}
-          <div className="flex md:hidden items-center space-x-2">
+          {/* Mobile Navigation Controls */}
+          <div className="flex md:hidden items-center space-x-1.5">
             <button
               onClick={onToggleTheme}
               aria-label="Toggle theme"
-              className="p-2 rounded-lg text-typography-light/80 hover:text-brand dark:text-typography-dark/80 dark:hover:text-brand-dark hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+              className="p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
-              {theme === 'dark' ? (
-                <Moon className="w-5 h-5 text-brand-dark" />
-              ) : (
-                <Sun className="w-5 h-5 text-amber-500" />
-              )}
+              {theme === 'dark' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
-              className="p-2 rounded-lg text-typography-light hover:text-brand dark:text-typography-dark dark:hover:text-brand-dark hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+              className="p-2 rounded-lg text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -74,13 +85,13 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-black/5 dark:border-white/10 bg-body-light/95 dark:bg-body-dark/95 backdrop-blur-md px-4 pt-2 pb-4 space-y-1 shadow-lg transition-all duration-200">
+        <div className="md:hidden mt-2 mx-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-lg p-2.5 space-y-1 shadow-lg animate-in slide-in-from-top-2 duration-150">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2.5 rounded-lg text-base font-medium text-typography-light/90 hover:text-brand dark:text-typography-dark/90 dark:hover:text-brand-dark hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+              className="block px-3.5 py-2 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               {item.label}
             </a>
@@ -90,4 +101,3 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
     </nav>
   );
 };
-

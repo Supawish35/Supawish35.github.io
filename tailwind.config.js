@@ -9,42 +9,50 @@ export default {
     extend: {
       colors: {
         brand: {
-          light: '#6f42c1',
-          dark: '#8a63d2',
-          DEFAULT: '#6f42c1',
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
+          DEFAULT: '#2563eb',
+          light: '#2563eb',
+          dark: '#3b82f6',
         },
         surface: {
           light: '#ffffff',
-          dark: '#252728',
+          dark: '#121215',
         },
         body: {
-          light: '#f8f9fa',
-          dark: '#121212',
+          light: '#fafafa',
+          dark: '#09090b',
         },
         subtle: {
-          light: '#f8f9fa',
-          dark: '#1c1c1d',
+          light: '#f4f4f5',
+          dark: '#141418',
         },
         typography: {
-          light: '#212529',
-          dark: '#f8f9fa',
+          light: '#09090b',
+          dark: '#f4f4f5',
         },
-        facebook: {
-          DEFAULT: '#0865fd',
-          hover: '#2476fc',
-        }
       },
       fontFamily: {
-        sans: ['Poppins', 'Sarabun', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Prompt', 'Sarabun', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        heading: ['"Plus Jakarta Sans"', 'Prompt', 'sans-serif'],
       },
       boxShadow: {
-        'card': '0 4px 12px rgba(79, 73, 73, 0.08)',
-        'card-hover': '0 12px 28px rgba(0, 0, 0, 0.15)',
-        'card-dark': '0 4px 12px rgba(0, 0, 0, 0.3)',
-        'card-dark-hover': '0 12px 28px rgba(0, 0, 0, 0.45)',
-      }
+        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05)',
+        'card-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04)',
+        'card-dark': '0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2)',
+        'card-dark-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3)',
+      },
     },
   },
   plugins: [],
 }
-

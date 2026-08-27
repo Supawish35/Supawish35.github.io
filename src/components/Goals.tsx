@@ -6,16 +6,19 @@ export const Goals: React.FC = () => {
   const { careerInterest } = portfolioData;
 
   return (
-    <section id="goals" className="py-20 bg-body-light dark:bg-body-dark text-center transition-colors duration-300">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-surface-light dark:bg-surface-dark p-8 sm:p-12 rounded-3xl shadow-card dark:shadow-card-dark border border-black/5 dark:border-white/5">
-          <div className="w-12 h-12 rounded-2xl bg-brand/10 dark:bg-brand-dark/10 text-brand dark:text-brand-dark flex items-center justify-center mx-auto mb-6">
-            <Target className="w-6 h-6" />
+    <section id="goals" className="py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-950/50 transition-colors duration-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white dark:bg-zinc-900 p-8 sm:p-12 rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-card dark:shadow-card-dark">
+          <div className="flex items-center gap-3.5 mb-5">
+            <div className="p-3 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+              <Target className="w-6 h-6 text-brand" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight font-heading text-zinc-900 dark:text-zinc-100">
+              เป้าหมายในสายอาชีพ (Career Interest)
+            </h2>
           </div>
-          <h2 className="text-3xl font-bold mb-4 tracking-tight text-typography-light dark:text-typography-dark">
-            ความสนใจในสายอาชีพ (Career Interest)
-          </h2>
-          <p className="text-lg sm:text-xl text-typography-light/80 dark:text-typography-dark/80 max-w-2xl mx-auto leading-relaxed">
+
+          <p className="text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
             {careerInterest}
           </p>
         </div>
@@ -23,4 +26,3 @@ export const Goals: React.FC = () => {
     </section>
   );
 };
-

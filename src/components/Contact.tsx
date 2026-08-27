@@ -1,5 +1,5 @@
-import React from 'react';
-import { Mail } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Copy, Check, ExternalLink } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' }) => (
@@ -20,61 +20,120 @@ const FacebookIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' 
 
 export const Contact: React.FC = () => {
   const { contacts } = portfolioData;
+  const [copied, setCopied] = useState(false);
 
-  const getButtonClass = (type: string) => {
-    switch (type) {
-      case 'email':
-        return 'bg-rose-600 hover:bg-rose-700 text-white';
-      case 'github':
-        return 'bg-gray-900 hover:bg-black text-white';
-      case 'facebook':
-        return 'bg-facebook hover:bg-facebook-hover text-white';
-      default:
-        return 'bg-brand hover:bg-brand/90 text-white';
-    }
-  };
+  const emailContact = contacts.find((c) => c.type === 'email');
+  const emailAddress = emailContact ? emailContact.url.replace('mailto:', '') : 'supawish35@gmail.com';
 
-  const renderIcon = (type: string) => {
-    switch (type) {
-      case 'email':
-        return <Mail className="w-5 h-5" />;
-      case 'github':
-        return <GithubIcon className="w-5 h-5" />;
-      case 'facebook':
-        return <FacebookIcon className="w-5 h-5" />;
-      default:
-        return null;
-    }
+  const handleCopyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(emailAddress);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <section id="contact" className="py-20 bg-subtle-light dark:bg-subtle-dark text-center transition-colors duration-300">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold mb-4 tracking-tight text-typography-light dark:text-typography-dark">
-          ติดต่อ (Contact)
-        </h2>
-        <p className="text-typography-light/80 dark:text-typography-dark/80 mb-8 text-base sm:text-lg font-normal">
-          คุณสามารถติดต่อฉันได้ผ่านช่องทางต่อไปนี้:
-        </p>
+    <section id="contact" className="py-24 bg-white dark:bg-zinc-900/50 transition-colors duration-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+        {/* Section Header */}
+        <div className="mb-14">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-zinc-900 dark:text-zinc-100 mb-3">
+            ติดต่อ (Contact)
+          </h2>
+          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
+            สามารถติดต่อพูดคุย หรือส่งอีเมลมาได้ตลอดเวลา
+          </p>
+        </div>
 
-        <div className="flex flex-wrap justify-center gap-4">
-          {contacts.map((contact) => (
+        {/* Contact Links Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {/* Email Box */}
+          <div className="bg-zinc-50 dark:bg-zinc-900 p-6 sm:p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
+            <div className="flex items-center gap-3.5 mb-5">
+              <div className="p-2.5 rounded-xl bg-zinc-200/70 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200">
+                <Mail className="w-5 h-5" />
+              </div>
+              <div className="text-left">
+                <h3 className="font-bold text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Email</h3>
+                <p className="text-sm sm:text-base font-mono font-medium text-zinc-900 dark:text-zinc-100 truncate max-w-[220px]">
+                  {emailAddress}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 pt-3 border-t border-zinc-200/60 dark:border-zinc-800">
+              <a
+                href={`mailto:${emailAddress}`}
+                className="flex-1 py-2 px-4 rounded-xl bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-100 dark:hover:bg-white text-white dark:text-zinc-900 text-sm font-semibold transition-colors text-center"
+              >
+                ส่งอีเมล
+              </a>
+              <button
+                onClick={handleCopyEmail}
+                className="p-2 rounded-xl bg-zinc-200/70 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 transition-colors"
+                title="คัดลอกอีเมล"
+                aria-label="Copy email address"
+              >
+                {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
+              </button>
+            </div>
+          </div>
+
+          {/* GitHub Box */}
+          {contacts.find((c) => c.type === 'github') && (
             <a
-              key={contact.name}
-              href={contact.url}
-              target={contact.type !== 'email' ? '_blank' : undefined}
-              rel={contact.type !== 'email' ? 'noopener noreferrer' : undefined}
-              className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-medium text-base shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 ${getButtonClass(
-                contact.type
-              )}`}
+              href={contacts.find((c) => c.type === 'github')!.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-zinc-50 dark:bg-zinc-900 p-6 sm:p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between group hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
             >
-              {renderIcon(contact.type)}
-              <span>{contact.name}</span>
+              <div className="flex items-center gap-3.5 mb-5">
+                <div className="p-2.5 rounded-xl bg-zinc-200/70 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200">
+                  <GithubIcon className="w-5 h-5" />
+                </div>
+                <div className="text-left">
+                  <h3 className="font-bold text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">GitHub</h3>
+                  <p className="text-sm sm:text-base font-mono font-medium text-zinc-900 dark:text-zinc-100">
+                    @Supawish35
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between pt-3 border-t border-zinc-200/60 dark:border-zinc-800 text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-brand">
+                <span>เปิดดู GitHub</span>
+                <ExternalLink className="w-4 h-4" />
+              </div>
             </a>
-          ))}
+          )}
+
+          {/* Facebook Box */}
+          {contacts.find((c) => c.type === 'facebook') && (
+            <a
+              href={contacts.find((c) => c.type === 'facebook')!.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-zinc-50 dark:bg-zinc-900 p-6 sm:p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between group hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
+            >
+              <div className="flex items-center gap-3.5 mb-5">
+                <div className="p-2.5 rounded-xl bg-zinc-200/70 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200">
+                  <FacebookIcon className="w-5 h-5" />
+                </div>
+                <div className="text-left">
+                  <h3 className="font-bold text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Facebook</h3>
+                  <p className="text-sm sm:text-base font-medium text-zinc-900 dark:text-zinc-100 truncate max-w-[220px]">
+                    Supawish Hanmontree
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between pt-3 border-t border-zinc-200/60 dark:border-zinc-800 text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-brand">
+                <span>ส่งข้อความ</span>
+                <ExternalLink className="w-4 h-4" />
+              </div>
+            </a>
+          )}
         </div>
       </div>
     </section>
   );
 };
-
