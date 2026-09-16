@@ -262,7 +262,7 @@ export const translations: Record<Language, TranslationContent> = {
         {
           title: "Thai-Help-Thai Calculator",
           description: "A specialized calculation tool for the government's Thai Help Thai Plus welfare program.",
-          image: "public/asset/image.png",
+          image: "asset/image.png",
           githubUrl: "https://github.com/Supawish35/thai_help_thai",
           demoUrl: "https://thai-help-thai.onrender.com/",
         },
