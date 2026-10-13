@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowDown, ArrowUpRight, Mail } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { revealDelay } from '../hooks/useScrollReveal';
 
 const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -20,29 +21,29 @@ export const Hero: React.FC = () => {
   const emailContact = contacts.find((c) => c.type === 'email');
 
   return (
-    <header id="profile" className="relative pt-32 pb-24 md:pt-40 md:pb-28 border-b border-zinc-200/80 dark:border-zinc-800/80">
+    <header id="profile" className="relative pt-32 pb-20 sm:pb-24 md:pt-40 md:pb-28 border-b border-slate-200/80 dark:border-slate-800/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-12 lg:gap-16">
+        <div className="flex flex-col-reverse md:flex-row items-center md:items-center justify-between gap-10 lg:gap-16">
           
           {/* Main Info */}
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 font-heading mb-4 leading-tight">
+            <h1 data-reveal className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 font-heading mb-5 leading-[1.08] text-balance">
               {name}
             </h1>
 
-            <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed mb-7 max-w-2xl">
+            <p data-reveal style={revealDelay(1)} className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 font-normal leading-relaxed mb-8 max-w-2xl">
               {role}
             </p>
 
             {/* Interests Chips */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-9">
-              <span className="text-xs sm:text-sm font-medium text-zinc-400 dark:text-zinc-500 mr-1">
+            <div data-reveal style={revealDelay(2)} className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-9">
+              <span className="text-xs sm:text-sm font-medium text-slate-400 dark:text-slate-500 mr-1">
                 {t.ui.hero.interestsLabel}
               </span>
               {interests.map((interest) => (
                 <span
                   key={interest}
-                  className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-700/80 transition-colors hover:border-zinc-300 dark:hover:border-zinc-600"
+                  className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700/80 transition-colors hover:border-slate-300 dark:hover:border-slate-600"
                 >
                   {interest}
                 </span>
@@ -50,10 +51,10 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Quick Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3.5">
+            <div data-reveal style={revealDelay(3)} className="flex flex-wrap items-center justify-center md:justify-start gap-3.5">
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-100 dark:hover:bg-white text-white dark:text-zinc-900 font-semibold text-sm sm:text-base transition-colors shadow-sm active:scale-95"
+                className="inline-flex min-h-11 items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-white text-white dark:text-slate-900 font-semibold text-sm sm:text-base transition-colors shadow-sm active:scale-[0.98]"
               >
                 <span>{t.ui.hero.viewProjects}</span>
                 <ArrowDown className="w-4 h-4" />
@@ -64,20 +65,20 @@ export const Hero: React.FC = () => {
                   href={githubContact.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-semibold text-sm sm:text-base border border-zinc-200 dark:border-zinc-800 transition-colors shadow-subtle active:scale-95"
+                  className="inline-flex min-h-11 items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm sm:text-base border border-slate-200 dark:border-slate-800 transition-colors shadow-subtle active:scale-[0.98]"
                 >
                   <GithubIcon className="w-4 h-4" />
                   <span>GitHub</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
                 </a>
               )}
 
               {emailContact && (
                 <a
                   href={emailContact.url}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-semibold text-sm sm:text-base border border-zinc-200 dark:border-zinc-800 transition-colors shadow-subtle active:scale-95"
+                  className="inline-flex min-h-11 items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm sm:text-base border border-slate-200 dark:border-slate-800 transition-colors shadow-subtle active:scale-[0.98]"
                 >
-                  <Mail className="w-4 h-4 text-zinc-500" />
+                  <Mail className="w-4 h-4 text-slate-500" />
                   <span>{t.ui.hero.contact}</span>
                 </a>
               )}
@@ -85,12 +86,15 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Profile Avatar */}
-          <div className="flex-shrink-0">
-            <div className="relative p-1.5 rounded-3xl bg-zinc-200/60 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/80 shadow-card dark:shadow-card-dark">
+          <div data-reveal style={revealDelay(2)} className="flex-shrink-0">
+            <div className="relative rounded-[1.75rem] bg-white/80 dark:bg-slate-900/80 p-2 border border-slate-200/80 dark:border-slate-700/80 shadow-xl shadow-slate-900/5 dark:shadow-black/20 ring-1 ring-white/70 dark:ring-white/5">
               <img
                 src={avatar}
                 alt={name}
-                className="w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 rounded-2xl object-cover"
+                width={240}
+                height={240}
+                fetchPriority="high"
+                className="w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60 rounded-[1.35rem] object-cover"
               />
             </div>
           </div>

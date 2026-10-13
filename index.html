@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Supphawit Hanmontree, a third-year Computer Science student: projects, skills, and contact.">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020617">
+    <script>
+        // Apply the saved (or system) theme before first paint to avoid a light flash in dark mode.
+        try {
+            var theme = localStorage.getItem('theme');
+            if (theme !== 'light' && theme !== 'dark') {
+                theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+    </script>
     <title>ศุภวิชญ์ หาญมนตรี | Software Engineering Portfolio</title>
-    <link rel="icon" type="image/jpeg" href="asset/profile.jpeg">
+    <link rel="icon" type="image/webp" href="asset/profile.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">

@@ -15,6 +15,10 @@ export const BackgroundEffects: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+    if (reduceMotion || isCoarsePointer) return;
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 

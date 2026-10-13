@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from './hooks/useTheme';
-import { LanguageProvider } from './context/LanguageContext';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
+import { useScrollReveal } from './hooks/useScrollReveal';
 import { BackgroundEffects } from './components/BackgroundEffects';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -15,6 +16,8 @@ import { ScrollToTop } from './components/ScrollToTop';
 
 const AppContent: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
+  const { language } = useLanguage();
+  useScrollReveal(language);
 
   return (
     <div className="relative min-h-screen flex flex-col bg-body-light dark:bg-body-dark text-typography-light dark:text-typography-dark transition-colors duration-300 font-sans selection:bg-brand-500/20 selection:text-brand-600 dark:selection:text-brand-300">

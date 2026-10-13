@@ -25,19 +25,19 @@ export default {
         },
         surface: {
           light: '#ffffff',
-          dark: '#121215',
+          dark: '#0f172a',
         },
         body: {
-          light: '#fafafa',
-          dark: '#09090b',
+          light: '#f8fafc',
+          dark: '#020617',
         },
         subtle: {
-          light: '#f4f4f5',
-          dark: '#141418',
+          light: '#f1f5f9',
+          dark: '#0f172a',
         },
         typography: {
-          light: '#09090b',
-          dark: '#f4f4f5',
+          light: '#0f172a',
+          dark: '#f1f5f9',
         },
       },
       fontFamily: {
@@ -46,9 +46,9 @@ export default {
         heading: ['"Plus Jakarta Sans"', 'Prompt', 'sans-serif'],
       },
       boxShadow: {
-        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05)',
-        'card-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04)',
+        'subtle': '0 1px 2px 0 rgba(15, 23, 42, 0.05)',
+        'card': '0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.06)',
+        'card-hover': '0 12px 28px -6px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.06)',
         'card-dark': '0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2)',
         'card-dark-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3)',
         'glow-brand': '0 0 50px -10px rgba(37, 99, 235, 0.3)',
@@ -58,8 +58,18 @@ export default {
         'blob-slow': 'blob 22s infinite ease-in-out',
         'float-slow': 'float 8s ease-in-out infinite',
         'pulse-slow': 'pulseGlow 6s ease-in-out infinite',
+        'pop-in': 'popIn 200ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'drop-in': 'dropIn 160ms ease-out',
       },
       keyframes: {
+        popIn: {
+          from: { opacity: '0', transform: 'scale(0.96)' },
+          to: { opacity: '1', transform: 'scale(1)' },
+        },
+        dropIn: {
+          from: { opacity: '0', transform: 'translateY(-8px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
         blob: {
           '0%, 100%': {
             transform: 'translate(0px, 0px) scale(1)',

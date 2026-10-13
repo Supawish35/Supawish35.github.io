@@ -1,6 +1,7 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { revealDelay } from '../hooks/useScrollReveal';
 
 const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -17,37 +18,43 @@ export const Projects: React.FC = () => {
   const { projects } = t.portfolioData;
 
   return (
-    <section id="projects" className="py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/60 dark:bg-zinc-900/30 transition-colors duration-200">
+    <section id="projects" className="py-24 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/30 transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-14">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-zinc-900 dark:text-zinc-100 mb-3">
+        <div className="mb-14" data-reveal>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-slate-900 dark:text-slate-100 mb-3">
             {t.ui.projects.sectionTitle}
           </h2>
-          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400">
             {t.ui.projects.sectionSubtitle}
           </p>
         </div>
 
         {/* Projects Centered Grid (Max 3 Columns, Centered if 2 items) */}
         <div className="flex flex-wrap justify-center gap-7">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div
               key={project.title}
-              className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] max-w-md bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden shadow-card dark:shadow-card-dark border border-zinc-200 dark:border-zinc-800 flex flex-col group hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
+              data-reveal
+              style={revealDelay(index)}
+              className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] max-w-md bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-card dark:shadow-card-dark border border-slate-200 dark:border-slate-800 flex flex-col group hover:-translate-y-1 hover:shadow-card-hover dark:hover:shadow-card-dark-hover hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200"
             >
               {/* Project Image Frame */}
-              <div className="relative overflow-hidden aspect-video bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200/70 dark:border-zinc-800">
+              <div className="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800 border-b border-slate-200/70 dark:border-slate-800">
                 {project.imageDark ? (
                   <>
                     <img
                       src={project.image}
                       alt={project.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 dark:hidden"
                     />
                     <img
                       src={project.imageDark}
                       alt={project.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 hidden dark:block"
                     />
                   </>
@@ -55,6 +62,8 @@ export const Projects: React.FC = () => {
                   <img
                     src={project.image}
                     alt={project.title}
+                      loading="lazy"
+                      decoding="async"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 )}
@@ -62,20 +71,20 @@ export const Projects: React.FC = () => {
 
               {/* Project Info & Actions */}
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-lg sm:text-xl font-bold mb-2.5 font-heading text-zinc-900 dark:text-zinc-100">
+                <h3 className="text-lg sm:text-xl font-bold mb-2.5 font-heading text-slate-900 dark:text-slate-100">
                   {project.title}
                 </h3>
-                <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mb-6 leading-relaxed flex-1">
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-6 leading-relaxed flex-1">
                   {project.description}
                 </p>
 
                 {/* Actions */}
-                <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t border-zinc-100 dark:border-zinc-800/80 mt-auto">
+                <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t border-slate-100 dark:border-slate-800/80 mt-auto">
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 font-semibold text-xs sm:text-sm transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm transition-colors"
                   >
                     <GithubIcon className="w-4 h-4" />
                     <span>{t.ui.projects.sourceCode}</span>

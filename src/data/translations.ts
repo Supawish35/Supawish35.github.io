@@ -27,6 +27,7 @@ export interface TranslationContent {
       sectionTitle: string;
       sectionSubtitle: string;
       viewFull: string;
+      close: string;
     };
     goals: {
       sectionTitle: string;
@@ -42,6 +43,7 @@ export interface TranslationContent {
     };
     footer: {
       rights: string;
+      backToTop: string;
     };
     navbar: {
       switchLanguage: string;
@@ -58,7 +60,7 @@ export const translations: Record<Language, TranslationContent> = {
       { label: "ทักษะ", href: "#skills" },
       { label: "ผลงาน", href: "#projects" },
       { label: "การศึกษา", href: "#education" },
-      { label: "กิจกรรม", href: "#activities" },
+      { label: "ใบรับรอง", href: "#certificates" },
       { label: "เป้าหมาย", href: "#goals" },
       { label: "ติดต่อ", href: "#contact" },
     ],
@@ -72,7 +74,7 @@ export const translations: Record<Language, TranslationContent> = {
         "Backend Development",
         "Software Engineering",
       ],
-      avatar: "asset/profile.jpeg",
+      avatar: "asset/profile.webp",
       skills: [
         {
           title: "Programming",
@@ -84,14 +86,9 @@ export const translations: Record<Language, TranslationContent> = {
           ],
         },
         {
-          title: "AI & Data",
-          icon: "cpu",
-          skills: ["SQL"],
-        },
-        {
-          title: "Tools",
+          title: "Tools & Data",
           icon: "tools",
-          skills: ["Git", "VS Code", "JetBrains IDE", "Azure"],
+          skills: ["Git", "VS Code", "JetBrains IDE", "Azure", "SQL"],
         },
         {
           title: "Soft Skills",
@@ -103,7 +100,7 @@ export const translations: Record<Language, TranslationContent> = {
         {
           title: "Pop-siam",
           description: "โปรเจ็คสันทนาการที่สร้างขึ้นเพื่อศึกษาการใช้งาน Web Sockets",
-          image: "asset/pop-siam.png",
+          image: "asset/pop-siam.webp",
           githubUrl: "https://github.com/Supawish35/Pop-siam",
           demoUrl: "https://pop-siam.onrender.com",
         },
@@ -189,6 +186,7 @@ export const translations: Record<Language, TranslationContent> = {
         sectionTitle: "ใบรับรอง (Certificates)",
         sectionSubtitle: "ใบรับรองความสามารถและการทดสอบ",
         viewFull: "ดูภาพเต็ม",
+        close: "ปิด",
       },
       goals: {
         sectionTitle: "เป้าหมายในสายอาชีพ (Career Interest)",
@@ -204,6 +202,7 @@ export const translations: Record<Language, TranslationContent> = {
       },
       footer: {
         rights: "สงวนลิขสิทธิ์",
+        backToTop: "กลับขึ้นด้านบน",
       },
       navbar: {
         switchLanguage: "เปลี่ยนภาษา",
@@ -218,7 +217,7 @@ export const translations: Record<Language, TranslationContent> = {
       { label: "Skills", href: "#skills" },
       { label: "Projects", href: "#projects" },
       { label: "Education", href: "#education" },
-      { label: "Certificates", href: "#activities" },
+      { label: "Certificates", href: "#certificates" },
       { label: "Goals", href: "#goals" },
       { label: "Contact", href: "#contact" },
     ],
@@ -232,7 +231,7 @@ export const translations: Record<Language, TranslationContent> = {
         "Backend Development",
         "Software Engineering",
       ],
-      avatar: "asset/profile.jpeg",
+      avatar: "asset/profile.webp",
       skills: [
         {
           title: "Programming",
@@ -244,14 +243,9 @@ export const translations: Record<Language, TranslationContent> = {
           ],
         },
         {
-          title: "AI & Data",
-          icon: "cpu",
-          skills: ["SQL"],
-        },
-        {
-          title: "Tools",
+          title: "Tools & Data",
           icon: "tools",
-          skills: ["Git", "VS Code", "JetBrains IDE", "Azure"],
+          skills: ["Git", "VS Code", "JetBrains IDE", "Azure", "SQL"],
         },
         {
           title: "Soft Skills",
@@ -262,21 +256,21 @@ export const translations: Record<Language, TranslationContent> = {
       projects: [
         {
           title: "Pop-siam",
-          description: "A recreational web project built to explore real-time WebSocket communications.",
-          image: "asset/pop-siam.png",
+          description: "A hobby project for learning how WebSockets work.",
+          image: "asset/pop-siam.webp",
           githubUrl: "https://github.com/Supawish35/Pop-siam",
           demoUrl: "https://pop-siam.onrender.com",
         },
         {
           title: "Thai-Help-Thai Calculator",
-          description: "A specialized calculation tool for the government's Thai Help Thai Plus welfare program.",
+          description: "A calculator for the government's Thai Help Thai Plus program.",
           image: "asset/image.png",
           githubUrl: "https://github.com/Supawish35/thai_help_thai",
           demoUrl: "https://thai-help-thai.onrender.com/",
         },
         {
-          title: "Instagram follow back detector",
-          description: "This is a tool to find who is no following you back.",
+          title: "Instagram Follow Back Detector",
+          description: "Finds the Instagram accounts that don't follow you back.",
           image: "asset/followback-detector-light.png",
           imageDark: "asset/followback-detector-dark.png",
           githubUrl: "https://github.com/Supawish35/follow_back_detector",
@@ -323,7 +317,7 @@ export const translations: Record<Language, TranslationContent> = {
           type: "facebook",
         },
       ],
-      careerInterest: "I am passionate about pursuing a Software Engineering career with autonomy, creativity, and technical growth.",
+      careerInterest: "I want to work in software engineering, with the freedom to work independently.",
     },
     ui: {
       hero: {
@@ -332,30 +326,31 @@ export const translations: Record<Language, TranslationContent> = {
         contact: "Contact Me",
       },
       skills: {
-        sectionTitle: "Skills & Expertise",
-        sectionSubtitle: "Programming languages, frameworks, developer tools, and interpersonal skills",
+        sectionTitle: "Skills",
+        sectionSubtitle: "Languages, tools, and working skills",
       },
       projects: {
         sectionTitle: "Featured Projects",
-        sectionSubtitle: "Showcase of applications and projects I've designed and developed",
+        sectionSubtitle: "Projects I've built",
         sourceCode: "Source Code",
         liveDemo: "Live Demo",
       },
       education: {
-        sectionTitle: "Education History",
-        sectionSubtitle: "Academic background and qualifications",
+        sectionTitle: "Education",
+        sectionSubtitle: "Degrees and schools",
       },
       certificates: {
-        sectionTitle: "Certificates & Achievements",
-        sectionSubtitle: "Official certifications and assessment credentials",
+        sectionTitle: "Certificates",
+        sectionSubtitle: "Certificates and test results",
         viewFull: "View Full",
+        close: "Close",
       },
       goals: {
-        sectionTitle: "Career Goals & Interests",
+        sectionTitle: "Career Goals",
       },
       contact: {
         sectionTitle: "Get In Touch",
-        sectionSubtitle: "Feel free to reach out for collaborations, questions, or just a chat!",
+        sectionSubtitle: "Reach out about work, projects, or questions.",
         sendEmail: "Send Email",
         copyEmail: "Copy Email",
         copied: "Copied!",
@@ -364,6 +359,7 @@ export const translations: Record<Language, TranslationContent> = {
       },
       footer: {
         rights: "All rights reserved.",
+        backToTop: "Back to top",
       },
       navbar: {
         switchLanguage: "Switch Language",
