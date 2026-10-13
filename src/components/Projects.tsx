@@ -38,11 +38,26 @@ export const Projects: React.FC = () => {
             >
               {/* Project Image Frame */}
               <div className="relative overflow-hidden aspect-video bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200/70 dark:border-zinc-800">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
+                {project.imageDark ? (
+                  <>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 dark:hidden"
+                    />
+                    <img
+                      src={project.imageDark}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 hidden dark:block"
+                    />
+                  </>
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                )}
               </div>
 
               {/* Project Info & Actions */}

@@ -110,9 +110,17 @@ export const translations: Record<Language, TranslationContent> = {
         {
           title: "Thai-Help-Thai Calculator",
           description: "เป็นโปรเจคที่ใช้ในการคำนวณโครงการรัฐไทยช่วยไทยพลัส",
-          image: "public/asset/image.png",
+          image: "asset/image.png",
           githubUrl: "https://github.com/Supawish35/thai_help_thai",
           demoUrl: "https://thai-help-thai.onrender.com/",
+        },
+        {
+          title: "Instagram Follow Back Detector",
+          description: "เครื่องมือสำหรับตรวจสอบและค้นหาผู้ใช้งาน Instagram ที่ไม่ได้ติดตามคุณกลับ",
+          image: "asset/followback-detector-light.png",
+          imageDark: "asset/followback-detector-dark.png",
+          githubUrl: "https://github.com/Supawish35/follow_back_detector",
+          demoUrl: "https://followbackdetector.vercel.app/",
         },
       ],
       education: [
@@ -265,6 +273,14 @@ export const translations: Record<Language, TranslationContent> = {
           image: "asset/image.png",
           githubUrl: "https://github.com/Supawish35/thai_help_thai",
           demoUrl: "https://thai-help-thai.onrender.com/",
+        },
+        {
+          title: "Instagram follow back detector",
+          description: "This is a tool to find who is no following you back.",
+          image: "asset/followback-detector-light.png",
+          imageDark: "asset/followback-detector-dark.png",
+          githubUrl: "https://github.com/Supawish35/follow_back_detector",
+          demoUrl: "https://followbackdetector.vercel.app/",
         },
       ],
       education: [

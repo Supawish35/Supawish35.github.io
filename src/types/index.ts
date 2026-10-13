@@ -15,6 +15,7 @@ export interface ProjectItem {
   title: string;
   description: string;
   image: string;
+  imageDark?: string;
   githubUrl: string;
   demoUrl?: string;
 }
