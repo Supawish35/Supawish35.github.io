@@ -21,29 +21,29 @@ export const Hero: React.FC = () => {
   const emailContact = contacts.find((c) => c.type === 'email');
 
   return (
-    <header id="profile" className="relative pt-32 pb-20 sm:pb-24 md:pt-40 md:pb-28 border-b border-slate-200/80 dark:border-slate-800/80">
+    <header id="profile" className="relative pt-32 pb-20 sm:pb-24 md:pt-40 md:pb-28 border-b border-stone-900/5 dark:border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col-reverse md:flex-row items-center md:items-center justify-between gap-10 lg:gap-16">
           
           {/* Main Info */}
           <div className="flex-1 text-center md:text-left">
-            <h1 data-reveal className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 font-heading mb-5 leading-[1.08] text-balance">
+            <h1 data-reveal className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-stone-900 dark:text-stone-50 font-heading mb-5 leading-[1.08] text-balance">
               {name}
             </h1>
 
-            <p data-reveal style={revealDelay(1)} className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 font-normal leading-relaxed mb-8 max-w-2xl">
+            <p data-reveal style={revealDelay(1)} className="text-lg sm:text-xl text-stone-600 dark:text-stone-400 font-normal leading-relaxed mb-8 max-w-2xl">
               {role}
             </p>
 
             {/* Interests Chips */}
             <div data-reveal style={revealDelay(2)} className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-9">
-              <span className="text-xs sm:text-sm font-medium text-slate-400 dark:text-slate-500 mr-1">
+              <span className="text-xs sm:text-sm font-medium text-stone-400 dark:text-stone-500 mr-1">
                 {t.ui.hero.interestsLabel}
               </span>
               {interests.map((interest) => (
                 <span
                   key={interest}
-                  className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700/80 transition-colors hover:border-slate-300 dark:hover:border-slate-600"
+                  className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-stone-700 dark:text-stone-300 glass-soft"
                 >
                   {interest}
                 </span>
@@ -54,7 +54,7 @@ export const Hero: React.FC = () => {
             <div data-reveal style={revealDelay(3)} className="flex flex-wrap items-center justify-center md:justify-start gap-3.5">
               <a
                 href="#projects"
-                className="inline-flex min-h-11 items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-white text-white dark:text-slate-900 font-semibold text-sm sm:text-base transition-colors shadow-sm active:scale-[0.98]"
+                className="inline-flex min-h-11 items-center gap-2 px-6 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 dark:bg-stone-100 dark:hover:bg-white text-white dark:text-stone-900 font-semibold text-sm sm:text-base transition-colors shadow-sm active:scale-[0.98]"
               >
                 <span>{t.ui.hero.viewProjects}</span>
                 <ArrowDown className="w-4 h-4" />
@@ -65,20 +65,20 @@ export const Hero: React.FC = () => {
                   href={githubContact.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm sm:text-base border border-slate-200 dark:border-slate-800 transition-colors shadow-subtle active:scale-[0.98]"
+                  className="inline-flex min-h-11 items-center gap-2 px-5 py-3 rounded-xl text-stone-800 dark:text-stone-200 font-semibold text-sm sm:text-base transition-colors active:scale-[0.98] glass-soft glass-hover"
                 >
                   <GithubIcon className="w-4 h-4" />
                   <span>GitHub</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-stone-400" />
                 </a>
               )}
 
               {emailContact && (
                 <a
                   href={emailContact.url}
-                  className="inline-flex min-h-11 items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm sm:text-base border border-slate-200 dark:border-slate-800 transition-colors shadow-subtle active:scale-[0.98]"
+                  className="inline-flex min-h-11 items-center gap-2 px-5 py-3 rounded-xl text-stone-800 dark:text-stone-200 font-semibold text-sm sm:text-base transition-colors active:scale-[0.98] glass-soft glass-hover"
                 >
-                  <Mail className="w-4 h-4 text-slate-500" />
+                  <Mail className="w-4 h-4 text-stone-500" />
                   <span>{t.ui.hero.contact}</span>
                 </a>
               )}
@@ -87,7 +87,7 @@ export const Hero: React.FC = () => {
 
           {/* Profile Avatar */}
           <div data-reveal style={revealDelay(2)} className="flex-shrink-0">
-            <div className="relative rounded-[1.75rem] bg-white/80 dark:bg-slate-900/80 p-2 border border-slate-200/80 dark:border-slate-700/80 shadow-xl shadow-slate-900/5 dark:shadow-black/20 ring-1 ring-white/70 dark:ring-white/5">
+            <div className="relative rounded-[1.75rem] p-2 glass">
               <img
                 src={avatar}
                 alt={name}

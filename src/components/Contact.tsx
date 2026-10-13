@@ -39,14 +39,14 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white/60 dark:bg-slate-900/30 transition-colors duration-200">
+    <section id="contact" className="py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
         {/* Section Header */}
         <div className="mb-14" data-reveal>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-slate-900 dark:text-slate-100 mb-3">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-stone-900 dark:text-stone-100 mb-3">
             {t.ui.contact.sectionTitle}
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400">
+          <p className="text-base sm:text-lg text-stone-600 dark:text-stone-400">
             {t.ui.contact.sectionSubtitle}
           </p>
         </div>
@@ -54,29 +54,29 @@ export const Contact: React.FC = () => {
         {/* Contact Links Row */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {/* Email Box */}
-          <div data-reveal className="bg-slate-50 dark:bg-slate-900 p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+          <div data-reveal className="p-6 sm:p-7 rounded-2xl flex flex-col justify-between glass">
             <div className="flex items-center gap-3.5 mb-5">
-              <div className="p-2.5 rounded-xl bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+              <div className="p-2.5 rounded-xl text-stone-800 dark:text-stone-200 glass-soft">
                 <Mail className="w-5 h-5" />
               </div>
               <div className="text-left">
-                <h3 className="font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Email</h3>
-                <p className="text-sm sm:text-base font-mono font-medium text-slate-900 dark:text-slate-100 truncate max-w-[220px]">
+                <h3 className="font-bold text-xs uppercase tracking-wider text-stone-500 dark:text-stone-400">Email</h3>
+                <p className="text-sm sm:text-base font-mono font-medium text-stone-900 dark:text-stone-100 truncate max-w-[220px]">
                   {emailAddress}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 pt-3 border-t border-slate-200/60 dark:border-slate-800">
+            <div className="flex items-center gap-2 pt-3 border-t border-stone-900/10 dark:border-white/10">
               <a
                 href={`mailto:${emailAddress}`}
-                className="flex-1 py-2 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-white text-white dark:text-slate-900 text-sm font-semibold transition-colors text-center"
+                className="flex-1 py-2 px-4 rounded-xl bg-stone-900 hover:bg-stone-800 dark:bg-stone-100 dark:hover:bg-white text-white dark:text-stone-900 text-sm font-semibold transition-colors text-center"
               >
                 {t.ui.contact.sendEmail}
               </a>
               <button
                 onClick={handleCopyEmail}
-                className="p-2 rounded-xl bg-slate-200/70 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
+                className="p-2 rounded-xl text-stone-700 dark:text-stone-300 glass-soft glass-hover"
                 title={t.ui.contact.copyEmail}
                 aria-label={t.ui.contact.copyEmail}
               >
@@ -94,21 +94,21 @@ export const Contact: React.FC = () => {
               rel="noopener noreferrer"
               data-reveal
               style={revealDelay(1)}
-              className="bg-slate-50 dark:bg-slate-900 p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between group hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+              className="p-6 sm:p-7 rounded-2xl flex flex-col justify-between group glass glass-hover"
             >
               <div className="flex items-center gap-3.5 mb-5">
-                <div className="p-2.5 rounded-xl bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+                <div className="p-2.5 rounded-xl text-stone-800 dark:text-stone-200 glass-soft">
                   <GithubIcon className="w-5 h-5" />
                 </div>
                 <div className="text-left">
-                  <h3 className="font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">GitHub</h3>
-                  <p className="text-sm sm:text-base font-mono font-medium text-slate-900 dark:text-slate-100">
+                  <h3 className="font-bold text-xs uppercase tracking-wider text-stone-500 dark:text-stone-400">GitHub</h3>
+                  <p className="text-sm sm:text-base font-mono font-medium text-stone-900 dark:text-stone-100">
                     @Supawish35
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-3 border-t border-slate-200/60 dark:border-slate-800 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-brand">
+              <div className="flex items-center justify-between pt-3 border-t text-xs sm:text-sm font-semibold text-stone-700 dark:text-stone-300 group-hover:text-brand-ink border-stone-900/10 dark:border-white/10">
                 <span>{t.ui.contact.openGithub}</span>
                 <ExternalLink className="w-4 h-4" />
               </div>
@@ -123,21 +123,21 @@ export const Contact: React.FC = () => {
               rel="noopener noreferrer"
               data-reveal
               style={revealDelay(2)}
-              className="bg-slate-50 dark:bg-slate-900 p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between group hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+              className="p-6 sm:p-7 rounded-2xl flex flex-col justify-between group glass glass-hover"
             >
               <div className="flex items-center gap-3.5 mb-5">
-                <div className="p-2.5 rounded-xl bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+                <div className="p-2.5 rounded-xl text-stone-800 dark:text-stone-200 glass-soft">
                   <FacebookIcon className="w-5 h-5" />
                 </div>
                 <div className="text-left">
-                  <h3 className="font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Facebook</h3>
-                  <p className="text-sm sm:text-base font-medium text-slate-900 dark:text-slate-100 truncate max-w-[220px]">
+                  <h3 className="font-bold text-xs uppercase tracking-wider text-stone-500 dark:text-stone-400">Facebook</h3>
+                  <p className="text-sm sm:text-base font-medium text-stone-900 dark:text-stone-100 truncate max-w-[220px]">
                     Supawish Hanmontree
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-3 border-t border-slate-200/60 dark:border-slate-800 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-brand">
+              <div className="flex items-center justify-between pt-3 border-t text-xs sm:text-sm font-semibold text-stone-700 dark:text-stone-300 group-hover:text-brand-ink border-stone-900/10 dark:border-white/10">
                 <span>{t.ui.contact.sendMessage}</span>
                 <ExternalLink className="w-4 h-4" />
               </div>

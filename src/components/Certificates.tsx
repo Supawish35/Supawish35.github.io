@@ -30,14 +30,14 @@ export const Certificates: React.FC = () => {
   }, [selectedCert]);
 
   return (
-    <section id="certificates" className="py-24 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/30 transition-colors duration-200">
+    <section id="certificates" className="py-24 border-b border-stone-900/5 dark:border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-14" data-reveal>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-slate-900 dark:text-slate-100 mb-3">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-stone-900 dark:text-stone-100 mb-3">
             {t.ui.certificates.sectionTitle}
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400">
+          <p className="text-base sm:text-lg text-stone-600 dark:text-stone-400">
             {t.ui.certificates.sectionSubtitle}
           </p>
         </div>
@@ -59,10 +59,10 @@ export const Certificates: React.FC = () => {
               role="button"
               tabIndex={0}
               aria-label={`${t.ui.certificates.viewFull}: ${cert.title}`}
-              className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] max-w-lg bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-card dark:shadow-card-dark border border-slate-200 dark:border-slate-800 flex flex-col group cursor-pointer hover:-translate-y-1 hover:shadow-card-hover dark:hover:shadow-card-dark-hover hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200"
+              className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] max-w-lg rounded-2xl overflow-hidden flex flex-col group cursor-pointer hover:-translate-y-1 transition-all duration-200 glass glass-hover"
             >
               {/* Image Preview Container */}
-              <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-800 p-4 flex items-center justify-center border-b border-slate-200/70 dark:border-slate-800">
+              <div className="relative overflow-hidden p-4 flex items-center justify-center border-b bg-black/5 dark:bg-white/5 border-stone-900/10 dark:border-white/10">
                 <img
                   src={cert.image}
                   alt={cert.title}
@@ -70,8 +70,8 @@ export const Certificates: React.FC = () => {
                   decoding="async"
                   className="w-full h-auto rounded-xl object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                 />
-                <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-                  <span className="px-4 py-2 rounded-xl bg-white/95 dark:bg-slate-900/95 text-slate-900 dark:text-white shadow-md flex items-center gap-2 text-xs sm:text-sm font-medium">
+                <div className="absolute inset-0 bg-stone-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                  <span className="px-4 py-2 rounded-xl bg-white/95 dark:bg-stone-900/95 text-stone-900 dark:text-white shadow-md flex items-center gap-2 text-xs sm:text-sm font-medium">
                     <Maximize2 className="w-4 h-4" />
                     <span>{t.ui.certificates.viewFull}</span>
                   </span>
@@ -80,8 +80,8 @@ export const Certificates: React.FC = () => {
 
               {/* Title */}
               <div className="p-5 text-center mt-auto">
-                <div className="inline-flex items-center gap-2 text-base font-semibold font-heading text-slate-900 dark:text-slate-100">
-                  <Award className="w-5 h-5 text-brand flex-shrink-0" />
+                <div className="inline-flex items-center gap-2 text-base font-semibold font-heading text-stone-900 dark:text-stone-100">
+                  <Award className="w-5 h-5 text-brand-ink flex-shrink-0" />
                   <span>{cert.title}</span>
                 </div>
               </div>
@@ -100,13 +100,13 @@ export const Certificates: React.FC = () => {
           aria-label={selectedCert.title}
         >
           <div
-            className="relative max-w-4xl w-full bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-7 flex flex-col items-center animate-pop-in"
+            className="relative max-w-4xl w-full rounded-3xl overflow-hidden p-5 sm:p-7 flex flex-col items-center animate-pop-in glass-strong"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setSelectedCert(null)}
-              className="absolute top-4 right-4 p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
+              className="absolute top-4 right-4 p-2.5 rounded-xl text-stone-700 dark:text-stone-300 glass-soft glass-hover"
               aria-label={t.ui.certificates.close}
               autoFocus
             >
@@ -114,7 +114,7 @@ export const Certificates: React.FC = () => {
             </button>
 
             {/* Modal Image */}
-            <div className="w-full max-h-[75vh] flex items-center justify-center overflow-auto rounded-2xl bg-slate-50 dark:bg-slate-950 p-2 sm:p-4">
+            <div className="w-full max-h-[75vh] flex items-center justify-center overflow-auto rounded-2xl p-2 sm:p-4 glass-soft">
               <img
                 src={selectedCert.image}
                 alt={selectedCert.title}
@@ -123,8 +123,8 @@ export const Certificates: React.FC = () => {
             </div>
 
             {/* Modal Caption */}
-            <div className="mt-5 flex items-center gap-2.5 text-lg sm:text-xl font-bold font-heading text-slate-900 dark:text-slate-100 text-center">
-              <Award className="w-5 h-5 text-brand flex-shrink-0" />
+            <div className="mt-5 flex items-center gap-2.5 text-lg sm:text-xl font-bold font-heading text-stone-900 dark:text-stone-100 text-center">
+              <Award className="w-5 h-5 text-brand-ink flex-shrink-0" />
               <span>{selectedCert.title}</span>
             </div>
           </div>

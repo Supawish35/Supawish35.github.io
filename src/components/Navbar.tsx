@@ -22,20 +22,20 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-        scrolled
-          ? 'py-3 bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl border-b border-slate-200/80 dark:border-slate-800/80 shadow-subtle'
-          : 'py-4 sm:py-5 bg-transparent'
-      }`}
+      className="fixed inset-x-0 top-0 z-50 px-3 sm:px-5 pt-3 sm:pt-4"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        className={`glass-nav max-w-6xl mx-auto rounded-2xl px-4 sm:px-6 transition-[padding] duration-300 ${
+          scrolled ? 'py-2' : 'py-3'
+        }`}
+      >
         <div className="flex items-center justify-between">
           {/* Brand Logo */}
           <a
             href="#"
-            className="text-base sm:text-lg font-bold tracking-tight text-slate-900 dark:text-slate-100 hover:opacity-80 transition-opacity"
+            className="text-base sm:text-lg font-bold tracking-tight text-stone-900 dark:text-stone-100 hover:opacity-80 transition-opacity"
           >
-            Supphawit<span className="text-brand font-mono font-normal text-sm ml-0.5">.dev</span>
+            Supphawit<span className="text-brand-ink font-mono font-normal text-sm ml-0.5">.dev</span>
           </a>
 
           {/* Desktop Navigation Links & Controls */}
@@ -44,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
               <a
                 key={item.href}
                 href={item.href}
-                className="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 transition-colors"
+                className="px-3.5 py-2 rounded-lg text-sm font-medium text-stone-600 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100 hover:bg-white/60 dark:hover:bg-white/10 transition-colors"
               >
                 {item.label}
               </a>
@@ -55,9 +55,9 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
               onClick={toggleLanguage}
               aria-label={t.ui.navbar.switchLanguage}
               title={language === 'th' ? 'Switch to English' : 'เปลี่ยนเป็นภาษาไทย'}
-              className="ml-2 flex min-h-10 items-center gap-1.5 px-3 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-100 transition-all border border-slate-200/80 dark:border-slate-700/80 active:scale-[0.98]"
+              className="ml-2 flex min-h-10 items-center gap-1.5 px-3 rounded-lg text-xs font-semibold bg-white/50 dark:bg-white/10 text-stone-700 dark:text-stone-300 hover:bg-white/80 dark:hover:bg-white/20 hover:text-stone-900 dark:hover:text-stone-100 transition-all border border-white/60 dark:border-white/10 active:scale-[0.98]"
             >
-              <Languages className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
+              <Languages className="w-3.5 h-3.5 text-stone-500 dark:text-stone-400" />
               <span className="font-mono tracking-wider uppercase font-bold">
                 {language === 'th' ? 'EN' : 'TH'}
               </span>
@@ -67,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
             <button
               onClick={onToggleTheme}
               aria-label={t.ui.navbar.toggleTheme}
-              className="min-h-10 min-w-10 grid place-items-center rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="min-h-10 min-w-10 grid place-items-center rounded-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-white/60 dark:hover:bg-white/10 transition-colors"
             >
               {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
@@ -80,9 +80,9 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
               onClick={toggleLanguage}
               aria-label={t.ui.navbar.switchLanguage}
               title={language === 'th' ? 'Switch to English' : 'เปลี่ยนเป็นภาษาไทย'}
-              className="flex min-h-10 items-center gap-1 px-2.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              className="flex min-h-10 items-center gap-1 px-2.5 rounded-lg text-xs font-bold bg-white/50 dark:bg-white/10 text-stone-700 dark:text-stone-300 border border-white/60 dark:border-white/10 hover:bg-white/80 dark:hover:bg-white/20 transition-colors"
             >
-              <Languages className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
+              <Languages className="w-3.5 h-3.5 text-stone-500 dark:text-stone-400" />
               <span className="font-mono">{language === 'th' ? 'EN' : 'TH'}</span>
             </button>
 
@@ -90,7 +90,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
             <button
               onClick={onToggleTheme}
               aria-label={t.ui.navbar.toggleTheme}
-              className="min-h-10 min-w-10 grid place-items-center rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="min-h-10 min-w-10 grid place-items-center rounded-lg text-stone-600 dark:text-stone-400 hover:bg-white/60 dark:hover:bg-white/10 transition-colors"
             >
               {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
@@ -101,7 +101,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
               aria-label={t.ui.navbar.toggleMenu}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"
-              className="min-h-10 min-w-10 grid place-items-center rounded-lg text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="min-h-10 min-w-10 grid place-items-center rounded-lg text-stone-800 dark:text-stone-200 hover:bg-white/60 dark:hover:bg-white/10 transition-colors"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -111,13 +111,13 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div id="mobile-navigation" className="md:hidden mt-2 mx-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-2.5 space-y-1 shadow-xl shadow-slate-900/10 dark:shadow-black/30 animate-drop-in">
+        <div id="mobile-navigation" className="glass-nav md:hidden mt-2 max-w-6xl mx-auto rounded-2xl p-2.5 space-y-1 animate-drop-in">
           {t.navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block min-h-11 px-3.5 py-3 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="block min-h-11 px-3.5 py-3 rounded-lg text-sm font-medium text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/10 transition-colors"
             >
               {item.label}
             </a>

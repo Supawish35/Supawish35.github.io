@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --brand-ink: 15 118 110; /* teal-700 */
+  }
+
+  .dark {
+    --brand-ink: 45 212 191; /* teal-400 */
+  }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem;
@@ -34,8 +42,12 @@ main > section h2 {
 }
 
 :focus-visible {
-  outline: 3px solid #3b82f6;
+  outline: 3px solid #0d9488;
   outline-offset: 3px;
+}
+
+.dark :focus-visible {
+  outline-color: #2dd4bf;
 }
 
 /* Modern High-End Dot Pattern with Radial Fade Mask */
@@ -64,11 +76,92 @@ main > section h2 {
 
 /* Glassmorphic card styling */
 .glass-panel {
-  @apply backdrop-blur-md bg-white/75 dark:bg-slate-900/75 border border-slate-200/80 dark:border-slate-800/80 shadow-card dark:shadow-card-dark;
+  @apply backdrop-blur-md bg-white/75 dark:bg-stone-900/75 border border-stone-200/80 dark:border-stone-800/80 shadow-card dark:shadow-card-dark;
 }
 
 .glass-panel-hover {
-  @apply hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-card-hover dark:hover:shadow-card-dark-hover transition-all duration-200;
+  @apply hover:border-stone-300 dark:hover:border-stone-700 hover:shadow-card-hover dark:hover:shadow-card-dark-hover transition-all duration-200;
+}
+
+/* Glassmorphism for the navbar: translucent teal-tinted fill, blur + saturation, light edge, inner highlight. */
+.glass-nav {
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.62), rgb(240 253 250 / 0.36));
+  border: 1px solid rgb(255 255 255 / 0.7);
+  box-shadow: 0 8px 32px rgb(28 25 23 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.85);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  backdrop-filter: blur(20px) saturate(1.6);
+}
+
+.dark .glass-nav {
+  background: linear-gradient(135deg, rgb(41 37 36 / 0.55), rgb(19 78 74 / 0.2));
+  border-color: rgb(255 255 255 / 0.1);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 0.45), inset 0 1px 0 rgb(255 255 255 / 0.1);
+}
+
+/* Glassmorphism system: .glass (cards), .glass-soft (chips, buttons, tiles), .glass-strong (modal), .glass-hover (lift on hover). */
+.glass,
+.glass-strong {
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.62), rgb(255 255 255 / 0.32));
+  border: 1px solid rgb(255 255 255 / 0.7);
+  box-shadow: 0 8px 32px rgb(28 25 23 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.8);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  backdrop-filter: blur(16px) saturate(1.5);
+}
+
+.glass-strong {
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.86), rgb(255 255 255 / 0.7));
+  -webkit-backdrop-filter: blur(28px) saturate(1.6);
+  backdrop-filter: blur(28px) saturate(1.6);
+}
+
+.glass-soft {
+  background: rgb(255 255 255 / 0.45);
+  border: 1px solid rgb(255 255 255 / 0.65);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.7);
+  -webkit-backdrop-filter: blur(10px) saturate(1.4);
+  backdrop-filter: blur(10px) saturate(1.4);
+}
+
+.dark .glass {
+  background: linear-gradient(135deg, rgb(41 37 36 / 0.5), rgb(28 25 23 / 0.28));
+  border-color: rgb(255 255 255 / 0.09);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 0.35), inset 0 1px 0 rgb(255 255 255 / 0.08);
+}
+
+.dark .glass-strong {
+  background: linear-gradient(135deg, rgb(41 37 36 / 0.88), rgb(28 25 23 / 0.8));
+  border-color: rgb(255 255 255 / 0.12);
+  box-shadow: 0 16px 48px rgb(0 0 0 / 0.5), inset 0 1px 0 rgb(255 255 255 / 0.1);
+}
+
+.dark .glass-soft {
+  background: rgb(255 255 255 / 0.06);
+  border-color: rgb(255 255 255 / 0.1);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+}
+
+.glass-hover {
+  transition: background-color 200ms, border-color 200ms, box-shadow 200ms, transform 200ms;
+}
+
+.glass.glass-hover:hover {
+  border-color: rgb(255 255 255 / 0.95);
+  box-shadow: 0 16px 40px rgb(28 25 23 / 0.14), inset 0 1px 0 rgb(255 255 255 / 0.9);
+}
+
+.glass-soft.glass-hover:hover {
+  background: rgb(255 255 255 / 0.75);
+  border-color: rgb(255 255 255 / 0.95);
+}
+
+.dark .glass.glass-hover:hover {
+  border-color: rgb(255 255 255 / 0.2);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.5), inset 0 1px 0 rgb(255 255 255 / 0.12);
+}
+
+.dark .glass-soft.glass-hover:hover {
+  background: rgb(255 255 255 / 0.12);
+  border-color: rgb(255 255 255 / 0.2);
 }
 
 /* Scroll reveal: hidden only once useScrollReveal has run, so content never depends on JS. */
@@ -112,5 +205,5 @@ html[data-reveal-ready] [data-reveal]:not([data-revealed]) {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 dark:bg-slate-700 rounded-full hover:bg-slate-400 dark:hover:bg-slate-600 transition-colors;
+  @apply bg-stone-300 dark:bg-stone-700 rounded-full hover:bg-stone-400 dark:hover:bg-stone-600 transition-colors;
 }

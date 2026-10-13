@@ -7,19 +7,19 @@ export const Goals: React.FC = () => {
   const { careerInterest } = t.portfolioData;
 
   return (
-    <section id="goals" className="py-24 border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-950/40 transition-colors duration-200">
+    <section id="goals" className="py-24 border-b border-stone-900/5 dark:border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div data-reveal className="relative overflow-hidden bg-white dark:bg-slate-900 p-7 sm:p-10 lg:p-12 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-card dark:shadow-card-dark">
+        <div data-reveal className="relative overflow-hidden p-7 sm:p-10 lg:p-12 rounded-3xl glass">
           <div className="flex items-center gap-3.5 mb-5">
-            <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-              <Target className="w-6 h-6 text-brand" />
+            <div className="p-3 rounded-xl text-stone-700 dark:text-stone-300 glass-soft">
+              <Target className="w-6 h-6 text-brand-ink" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight font-heading text-slate-900 dark:text-slate-100">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight font-heading text-stone-900 dark:text-stone-100">
               {t.ui.goals.sectionTitle}
             </h2>
           </div>
 
-          <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+          <p className="text-lg sm:text-xl text-stone-700 dark:text-stone-300 leading-relaxed font-normal">
             {careerInterest}
           </p>
         </div>

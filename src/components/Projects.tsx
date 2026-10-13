@@ -18,14 +18,14 @@ export const Projects: React.FC = () => {
   const { projects } = t.portfolioData;
 
   return (
-    <section id="projects" className="py-24 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/30 transition-colors duration-200">
+    <section id="projects" className="py-24 border-b border-stone-900/5 dark:border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-14" data-reveal>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-slate-900 dark:text-slate-100 mb-3">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-stone-900 dark:text-stone-100 mb-3">
             {t.ui.projects.sectionTitle}
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400">
+          <p className="text-base sm:text-lg text-stone-600 dark:text-stone-400">
             {t.ui.projects.sectionSubtitle}
           </p>
         </div>
@@ -37,10 +37,10 @@ export const Projects: React.FC = () => {
               key={project.title}
               data-reveal
               style={revealDelay(index)}
-              className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] max-w-md bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-card dark:shadow-card-dark border border-slate-200 dark:border-slate-800 flex flex-col group hover:-translate-y-1 hover:shadow-card-hover dark:hover:shadow-card-dark-hover hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200"
+              className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] max-w-md rounded-2xl overflow-hidden flex flex-col group hover:-translate-y-1 transition-all duration-200 glass glass-hover"
             >
               {/* Project Image Frame */}
-              <div className="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800 border-b border-slate-200/70 dark:border-slate-800">
+              <div className="relative overflow-hidden aspect-video border-b bg-black/5 dark:bg-white/5 border-stone-900/10 dark:border-white/10">
                 {project.imageDark ? (
                   <>
                     <img
@@ -71,20 +71,20 @@ export const Projects: React.FC = () => {
 
               {/* Project Info & Actions */}
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-lg sm:text-xl font-bold mb-2.5 font-heading text-slate-900 dark:text-slate-100">
+                <h3 className="text-lg sm:text-xl font-bold mb-2.5 font-heading text-stone-900 dark:text-stone-100">
                   {project.title}
                 </h3>
-                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-6 leading-relaxed flex-1">
+                <p className="text-sm sm:text-base text-stone-600 dark:text-stone-400 mb-6 leading-relaxed flex-1">
                   {project.description}
                 </p>
 
                 {/* Actions */}
-                <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t border-slate-100 dark:border-slate-800/80 mt-auto">
+                <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t mt-auto border-stone-900/10 dark:border-white/10">
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-stone-800 dark:text-stone-200 font-semibold text-xs sm:text-sm glass-soft glass-hover"
                   >
                     <GithubIcon className="w-4 h-4" />
                     <span>{t.ui.projects.sourceCode}</span>
@@ -95,7 +95,7 @@ export const Projects: React.FC = () => {
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand hover:bg-brand-600 text-white font-semibold text-xs sm:text-sm transition-colors shadow-sm"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand hover:bg-brand-800 text-white font-semibold text-xs sm:text-sm transition-colors shadow-sm"
                     >
                       <ExternalLink className="w-4 h-4" />
                       <span>{t.ui.projects.liveDemo}</span>
