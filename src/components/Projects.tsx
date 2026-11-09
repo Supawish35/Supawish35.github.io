@@ -1,7 +1,8 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { revealDelay } from '../hooks/useScrollReveal';
+import { CardSlider } from './CardSlider';
+import { ProjectItem } from '../types';
 
 const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -30,81 +31,85 @@ export const Projects: React.FC = () => {
           </p>
         </div>
 
-        {/* Projects Centered Grid (Max 3 Columns, Centered if 2 items) */}
-        <div className="flex flex-wrap justify-center gap-7">
-          {projects.map((project, index) => (
-            <div
-              key={project.title}
-              data-reveal
-              style={revealDelay(index)}
-              className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] max-w-md rounded-2xl overflow-hidden flex flex-col group hover:-translate-y-1 transition-all duration-200 glass glass-hover"
-            >
-              {/* Project Image Frame */}
-              <div className="relative overflow-hidden aspect-video border-b bg-black/5 dark:bg-white/5 border-stone-900/10 dark:border-white/10">
-                {project.imageDark ? (
-                  <>
+        {/* Projects Slide Deck */}
+        <div data-reveal>
+          <CardSlider<ProjectItem>
+            items={projects}
+            ariaLabel={t.ui.projects.sectionTitle}
+            prevLabel={t.ui.carousel.prev}
+            nextLabel={t.ui.carousel.next}
+            slideLabel={t.ui.carousel.slide}
+            ofLabel={t.ui.carousel.of}
+            maxDesktopColumns={3}
+            renderItem={(project) => (
+              <div className="w-full h-full rounded-2xl overflow-hidden flex flex-col group hover:-translate-y-1 transition-all duration-200 glass glass-hover">
+                {/* Project Image Frame */}
+                <div className="relative overflow-hidden aspect-video border-b bg-black/5 dark:bg-white/5 border-stone-900/10 dark:border-white/10">
+                  {project.imageDark ? (
+                    <>
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 dark:hidden"
+                      />
+                      <img
+                        src={project.imageDark}
+                        alt={project.title}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 hidden dark:block"
+                      />
+                    </>
+                  ) : (
                     <img
                       src={project.image}
                       alt={project.title}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 dark:hidden"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                    <img
-                      src={project.imageDark}
-                      alt={project.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 hidden dark:block"
-                    />
-                  </>
-                ) : (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                      loading="lazy"
-                      decoding="async"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                )}
-              </div>
-
-              {/* Project Info & Actions */}
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-lg sm:text-xl font-bold mb-2.5 font-heading text-stone-900 dark:text-stone-100">
-                  {project.title}
-                </h3>
-                <p className="text-sm sm:text-base text-stone-600 dark:text-stone-400 mb-6 leading-relaxed flex-1">
-                  {project.description}
-                </p>
-
-                {/* Actions */}
-                <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t mt-auto border-stone-900/10 dark:border-white/10">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-stone-800 dark:text-stone-200 font-semibold text-xs sm:text-sm glass-soft glass-hover"
-                  >
-                    <GithubIcon className="w-4 h-4" />
-                    <span>{t.ui.projects.sourceCode}</span>
-                  </a>
-
-                  {project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand hover:bg-brand-800 text-white font-semibold text-xs sm:text-sm transition-colors shadow-sm"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>{t.ui.projects.liveDemo}</span>
-                    </a>
                   )}
                 </div>
+
+                {/* Project Info & Actions */}
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-lg sm:text-xl font-bold mb-2.5 font-heading text-stone-900 dark:text-stone-100">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-stone-600 dark:text-stone-400 mb-6 leading-relaxed flex-1">
+                    {project.description}
+                  </p>
+
+                  {/* Actions */}
+                  <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t mt-auto border-stone-900/10 dark:border-white/10">
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-stone-800 dark:text-stone-200 font-semibold text-xs sm:text-sm glass-soft glass-hover"
+                    >
+                      <GithubIcon className="w-4 h-4" />
+                      <span>{t.ui.projects.sourceCode}</span>
+                    </a>
+
+                    {project.demoUrl && (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand hover:bg-brand-800 text-white font-semibold text-xs sm:text-sm transition-colors shadow-sm"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        <span>{t.ui.projects.liveDemo}</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            )}
+          />
         </div>
       </div>
     </section>

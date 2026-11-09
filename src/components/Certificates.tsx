@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Award, X, Maximize2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { revealDelay } from '../hooks/useScrollReveal';
+import { CardSlider } from './CardSlider';
 import { CertificateItem } from '../types';
 
 export const Certificates: React.FC = () => {
@@ -42,58 +42,65 @@ export const Certificates: React.FC = () => {
           </p>
         </div>
 
-        {/* Certificates Grid (Centered, Responsive, Max 3 Columns) */}
-        <div className="flex flex-wrap justify-center gap-7">
-          {certificates.map((cert, idx) => (
-            <div
-              key={idx}
-              data-reveal
-              style={revealDelay(idx)}
-              onClick={() => setSelectedCert(cert)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  setSelectedCert(cert);
-                }
-              }}
-              role="button"
-              tabIndex={0}
-              aria-label={`${t.ui.certificates.viewFull}: ${cert.title}`}
-              className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] max-w-lg rounded-2xl overflow-hidden flex flex-col group cursor-pointer hover:-translate-y-1 transition-all duration-200 glass glass-hover"
-            >
-              {/* Image Preview Container */}
-              <div className="relative overflow-hidden p-4 flex items-center justify-center border-b bg-black/5 dark:bg-white/5 border-stone-900/10 dark:border-white/10">
-                <img
-                  src={cert.image}
-                  alt={cert.title}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-auto rounded-xl object-contain transition-transform duration-300 group-hover:scale-[1.02]"
-                />
-                <div className="absolute inset-0 bg-stone-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-                  <span className="px-4 py-2 rounded-xl bg-white/95 dark:bg-stone-900/95 text-stone-900 dark:text-white shadow-md flex items-center gap-2 text-xs sm:text-sm font-medium">
-                    <Maximize2 className="w-4 h-4" />
-                    <span>{t.ui.certificates.viewFull}</span>
-                  </span>
+        {/* Certificates Slide Deck */}
+        <div data-reveal>
+          <CardSlider<CertificateItem>
+            items={certificates}
+            ariaLabel={t.ui.certificates.sectionTitle}
+            prevLabel={t.ui.carousel.prev}
+            nextLabel={t.ui.carousel.next}
+            slideLabel={t.ui.carousel.slide}
+            ofLabel={t.ui.carousel.of}
+            maxDesktopColumns={3}
+            cardClassName="max-w-lg"
+            renderItem={(cert) => (
+              <div
+                onClick={() => setSelectedCert(cert)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setSelectedCert(cert);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={`${t.ui.certificates.viewFull}: ${cert.title}`}
+                className="w-full h-full rounded-2xl overflow-hidden flex flex-col group cursor-pointer hover:-translate-y-1 transition-all duration-200 glass glass-hover"
+              >
+                {/* Image Preview Container */}
+                <div className="relative overflow-hidden p-4 flex items-center justify-center border-b bg-black/5 dark:bg-white/5 border-stone-900/10 dark:border-white/10 aspect-[4/3]">
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full rounded-xl object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
+                  <div className="absolute inset-0 bg-stone-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                    <span className="px-4 py-2 rounded-xl bg-white/95 dark:bg-stone-900/95 text-stone-900 dark:text-white shadow-md flex items-center gap-2 text-xs sm:text-sm font-medium">
+                      <Maximize2 className="w-4 h-4" />
+                      <span>{t.ui.certificates.viewFull}</span>
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Title */}
-              <div className="p-5 text-center mt-auto">
-                <div className="inline-flex items-center gap-2 text-base font-semibold font-heading text-stone-900 dark:text-stone-100">
-                  <Award className="w-5 h-5 text-brand-ink flex-shrink-0" />
-                  <span>{cert.title}</span>
+                {/* Title */}
+                <div className="p-5 text-center mt-auto">
+                  <div className="inline-flex items-center gap-2 text-base font-semibold font-heading text-stone-900 dark:text-stone-100">
+                    <Award className="w-5 h-5 text-brand-ink flex-shrink-0" />
+                    <span>{cert.title}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            )}
+          />
         </div>
       </div>
 
       {/* Certificate Lightbox Modal */}
       {selectedCert && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-sm transition-all duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 [.lite_&]:backdrop-blur-none backdrop-blur-sm transition-all duration-200"
           onClick={() => setSelectedCert(null)}
           role="dialog"
           aria-modal="true"

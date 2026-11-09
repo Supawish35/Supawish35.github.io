@@ -50,6 +50,12 @@ export interface TranslationContent {
       toggleTheme: string;
       toggleMenu: string;
     };
+    carousel: {
+      prev: string;
+      next: string;
+      slide: string;
+      of: string;
+    };
   };
 }
 
@@ -209,6 +215,12 @@ export const translations: Record<Language, TranslationContent> = {
         toggleTheme: "เปลี่ยนธีม",
         toggleMenu: "เมนู",
       },
+      carousel: {
+        prev: "สไลด์ก่อนหน้า",
+        next: "สไลด์ถัดไป",
+        slide: "สไลด์",
+        of: "จาก",
+      },
     },
   },
   en: {
@@ -365,6 +377,12 @@ export const translations: Record<Language, TranslationContent> = {
         switchLanguage: "Switch Language",
         toggleTheme: "Toggle Theme",
         toggleMenu: "Toggle Menu",
+      },
+      carousel: {
+        prev: "Previous slide",
+        next: "Next slide",
+        slide: "Slide",
+        of: "of",
       },
     },
   },
