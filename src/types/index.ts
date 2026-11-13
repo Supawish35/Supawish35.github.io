@@ -14,6 +14,7 @@ export interface SkillCategory {
 export interface ProjectItem {
   title: string;
   description: string;
+  tags?: string[];
   image: string;
   imageDark?: string;
   githubUrl: string;
@@ -37,11 +38,22 @@ export interface ContactChannel {
   type: 'email' | 'github' | 'facebook';
 }
 
+export interface CapabilityItem {
+  number: string;
+  title: string;
+  description: string;
+  stack: string[];
+}
+
 export interface PortfolioData {
   name: string;
   role: string;
+  headline: string;
+  summary: string;
+  facts: string[];
   interests: string[];
   avatar: string;
+  capabilities: CapabilityItem[];
   skills: SkillCategory[];
   projects: ProjectItem[];
   education: EducationItem[];

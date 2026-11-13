@@ -1,10 +1,9 @@
 import React from 'react';
-import { ArrowDown, ArrowUpRight, Mail } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Mail, Code2, Globe } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { revealDelay } from '../hooks/useScrollReveal';
 
-const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+const GithubGlyph: React.FC = () => (
+  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -14,93 +13,127 @@ const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' })
 );
 
 export const Hero: React.FC = () => {
-  const { t } = useLanguage();
-  const { name, role, interests, avatar, contacts } = t.portfolioData;
+  const { language, t } = useLanguage();
+  const { name, role, headline, summary, avatar, contacts } = t.portfolioData;
+  const github = contacts.find((c) => c.type === 'github');
+  const email = contacts.find((c) => c.type === 'email');
+  const facebook = contacts.find((c) => c.type === 'facebook');
 
-  const githubContact = contacts.find((c) => c.type === 'github');
-  const emailContact = contacts.find((c) => c.type === 'email');
+  const greeting = language === 'th' ? 'สวัสดี.' : 'Hello.';
+  const stamp = language === 'th' ? 'พร้อมทำงาน' : 'CS · YEAR 3';
 
   return (
-    <header id="profile" className="relative pt-32 pb-20 sm:pb-24 md:pt-40 md:pb-28 border-b border-stone-900/5 dark:border-white/5">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col-reverse md:flex-row items-center md:items-center justify-between gap-10 lg:gap-16">
-          
-          {/* Main Info */}
-          <div className="flex-1 text-center md:text-left">
-            <h1 data-reveal className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-stone-900 dark:text-stone-50 font-heading mb-5 leading-[1.08] text-balance">
-              {name}
-            </h1>
+    <section id="profile" className="grid min-h-[100dvh] pt-20 lg:grid-cols-2">
+      {/* Left Column: Acid Lime Editorial Panel */}
+      <div className="acid-panel relative flex flex-col justify-between overflow-visible bg-acid px-6 pb-10 pt-10 text-bg sm:px-12 lg:pt-12 lg:rounded-tr-[2.5rem]">
+        {/* Floating Stamp Badge */}
+        <div
+          aria-hidden="true"
+          className="absolute right-6 top-6 rotate-6 border border-bg/30 bg-bg px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-acid shadow-lg sm:right-10 sm:top-8"
+        >
+          {stamp}
+        </div>
 
-            <p data-reveal style={revealDelay(1)} className="text-lg sm:text-xl text-stone-600 dark:text-stone-400 font-normal leading-relaxed mb-8 max-w-2xl">
-              {role}
-            </p>
+        <div data-enter className="pt-2">
+          <h1 className="stretch-wide text-[clamp(4.25rem,11.5vw,10.5rem)] font-black leading-[0.88] tracking-[-0.03em] text-bg">
+            {greeting}
+          </h1>
+        </div>
 
-            {/* Interests Chips */}
-            <div data-reveal style={revealDelay(2)} className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-9">
-              <span className="text-xs sm:text-sm font-medium text-stone-400 dark:text-stone-500 mr-1">
-                {t.ui.hero.interestsLabel}
-              </span>
-              {interests.map((interest) => (
-                <span
-                  key={interest}
-                  className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-stone-700 dark:text-stone-300 glass-soft"
-                >
-                  {interest}
-                </span>
-              ))}
-            </div>
-
-            {/* Quick Action Buttons */}
-            <div data-reveal style={revealDelay(3)} className="flex flex-wrap items-center justify-center md:justify-start gap-3.5">
-              <a
-                href="#projects"
-                className="inline-flex min-h-11 items-center gap-2 px-6 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 dark:bg-stone-100 dark:hover:bg-white text-white dark:text-stone-900 font-semibold text-sm sm:text-base transition-colors shadow-sm active:scale-[0.98]"
-              >
-                <span>{t.ui.hero.viewProjects}</span>
-                <ArrowDown className="w-4 h-4" />
-              </a>
-
-              {githubContact && (
-                <a
-                  href={githubContact.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-2 px-5 py-3 rounded-xl text-stone-800 dark:text-stone-200 font-semibold text-sm sm:text-base transition-colors active:scale-[0.98] glass-soft glass-hover"
-                >
-                  <GithubIcon className="w-4 h-4" />
-                  <span>GitHub</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-stone-400" />
-                </a>
-              )}
-
-              {emailContact && (
-                <a
-                  href={emailContact.url}
-                  className="inline-flex min-h-11 items-center gap-2 px-5 py-3 rounded-xl text-stone-800 dark:text-stone-200 font-semibold text-sm sm:text-base transition-colors active:scale-[0.98] glass-soft glass-hover"
-                >
-                  <Mail className="w-4 h-4 text-stone-500" />
-                  <span>{t.ui.hero.contact}</span>
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Profile Avatar */}
-          <div data-reveal style={revealDelay(2)} className="flex-shrink-0">
-            <div className="relative rounded-[1.75rem] p-2 glass">
+        {/* Bottom Row: Tilted Polaroid + Overlapping 2x2 Social Grid + Identity Lockup */}
+        <div className="mt-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+          <div className="relative ml-4 w-[210px] sm:ml-6 sm:w-[240px] lg:ml-4">
+            <div className="bg-paper p-2 pb-7 shadow-2xl transition-transform duration-300 rotate-[-2deg] hover:rotate-0">
               <img
                 src={avatar}
                 alt={name}
-                width={240}
-                height={240}
                 fetchPriority="high"
-                className="w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60 rounded-[1.35rem] object-cover"
+                className="aspect-[3/4] w-full object-cover object-[58%_20%]"
               />
+            </div>
+
+            {/* Overlapping 2x2 Square Grid */}
+            <div className="absolute -left-4 bottom-6 z-10 grid grid-cols-2 gap-px border border-acid/40 bg-acid/40 shadow-xl sm:-left-5">
+              {github && (
+                <a
+                  href={github.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className="flex h-11 w-11 items-center justify-center bg-bg text-acid transition-colors duration-200 hover:bg-acid hover:text-bg"
+                >
+                  <GithubGlyph />
+                </a>
+              )}
+              {email && (
+                <a
+                  href={email.url}
+                  aria-label="Email"
+                  className="flex h-11 w-11 items-center justify-center bg-bg text-acid transition-colors duration-200 hover:bg-acid hover:text-bg"
+                >
+                  <Mail className="h-4 w-4" aria-hidden="true" />
+                </a>
+              )}
+              {facebook && (
+                <a
+                  href={facebook.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="flex h-11 w-11 items-center justify-center bg-bg text-acid transition-colors duration-200 hover:bg-acid hover:text-bg"
+                >
+                  <Globe className="h-4 w-4" aria-hidden="true" />
+                </a>
+              )}
+              <a
+                href="#projects"
+                aria-label={t.ui.hero.viewProjects}
+                className="flex h-11 w-11 items-center justify-center bg-bg text-acid transition-colors duration-200 hover:bg-acid hover:text-bg"
+              >
+                <Code2 className="h-4 w-4" aria-hidden="true" />
+              </a>
             </div>
           </div>
 
+          <div className="sm:pb-2 sm:text-right">
+            <p className="stretch-wide text-2xl font-bold leading-tight tracking-[-0.02em] text-bg sm:text-3xl">
+              {name}
+            </p>
+            <p className="stretch-narrow mt-1.5 max-w-[260px] text-xs uppercase tracking-[0.2em] text-bg/80 sm:ml-auto sm:text-sm">
+              {role}
+            </p>
+          </div>
         </div>
       </div>
-    </header>
+
+      {/* Right Column: Dark Intro & Pill Actions */}
+      <div data-enter className="flex flex-col justify-center gap-8 px-6 py-12 sm:px-12 lg:py-16 lg:px-16 xl:px-20">
+        <p className="max-w-xl text-2xl font-light leading-snug text-fg sm:text-3xl">
+          {headline}
+        </p>
+
+        <p className="max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+          {summary}
+        </p>
+
+        <div className="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#projects" className="pill-btn bg-acid text-bg">
+            {t.ui.hero.viewProjects}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+          {github && (
+            <a
+              href={github.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill-btn bg-paper text-bg"
+            >
+              GitHub
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
   );
 };

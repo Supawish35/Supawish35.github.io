@@ -1,0 +1,292 @@
+{
+ "url": "http://127.0.0.1:5300/index.html",
+ "views": {
+  "desktop": {
+   "width": 1440,
+   "height": 900,
+   "navH": 0,
+   "scrollHeight": 5807,
+   "screens": 6.45,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "section",
+     "id": "profile",
+     "cls": "grid min-h-[100dvh] pt-20 lg:grid-cols-2",
+     "top": 0,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-01-a.jpg",
+       "scrollY": 0
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tag": "section",
+     "id": "",
+     "cls": "border-y border-fg/10 bg-bg",
+     "top": 900,
+     "h": 158,
+     "hScreens": 0.18,
+     "offGrid": 158,
+     "tiles": [
+      {
+       "file": "desktop-sec-02-a.jpg",
+       "scrollY": 900
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tag": "section",
+     "id": "projects",
+     "cls": "overflow-x-clip py-24 lg:py-32",
+     "top": 1058,
+     "h": 2323,
+     "hScreens": 2.58,
+     "offGrid": 523,
+     "tiles": [
+      {
+       "file": "desktop-sec-03-a.jpg",
+       "scrollY": 1058
+      },
+      {
+       "file": "desktop-sec-03-b.jpg",
+       "scrollY": 1958
+      },
+      {
+       "file": "desktop-sec-03-c.jpg",
+       "scrollY": 2481
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tag": "section",
+     "id": "capabilities",
+     "cls": "border-t border-fg/10 py-24 lg:py-28",
+     "top": 3381,
+     "h": 697,
+     "hScreens": 0.77,
+     "offGrid": 697,
+     "tiles": [
+      {
+       "file": "desktop-sec-04-a.jpg",
+       "scrollY": 3381
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tag": "section",
+     "id": "skills",
+     "cls": "border-t border-fg/10 py-24 lg:py-28",
+     "top": 4078,
+     "h": 1195,
+     "hScreens": 1.33,
+     "offGrid": 295,
+     "tiles": [
+      {
+       "file": "desktop-sec-05-a.jpg",
+       "scrollY": 4078
+      },
+      {
+       "file": "desktop-sec-05-b.jpg",
+       "scrollY": 4373
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tag": "section",
+     "id": "contact",
+     "cls": "acid-panel border-t border-fg/10 bg-acid text-bg",
+     "top": 5273,
+     "h": 329,
+     "hScreens": 0.37,
+     "offGrid": 329,
+     "tiles": [
+      {
+       "file": "desktop-sec-06-a.jpg",
+       "scrollY": 4907,
+       "cutTop": 366,
+       "height": 329
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "tag": "footer",
+     "id": "",
+     "cls": "border-t border-fg/10 bg-bg text-sm text-muted",
+     "top": 5602,
+     "h": 205,
+     "hScreens": 0.23,
+     "offGrid": 205,
+     "tiles": [
+      {
+       "file": "desktop-sec-07-a.jpg",
+       "scrollY": 4907,
+       "cutTop": 695,
+       "height": 205
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  },
+  "mobile": {
+   "width": 390,
+   "height": 844,
+   "navH": 0,
+   "scrollHeight": 6835,
+   "screens": 8.1,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "section",
+     "id": "profile",
+     "cls": "grid min-h-[100dvh] pt-20 lg:grid-cols-2",
+     "top": 0,
+     "h": 1022,
+     "hScreens": 1.21,
+     "offGrid": 178,
+     "tiles": [
+      {
+       "file": "mobile-sec-01-a.jpg",
+       "scrollY": 0
+      },
+      {
+       "file": "mobile-sec-01-b.jpg",
+       "scrollY": 178
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tag": "section",
+     "id": "",
+     "cls": "border-y border-fg/10 bg-bg",
+     "top": 1022,
+     "h": 291,
+     "hScreens": 0.34,
+     "offGrid": 291,
+     "tiles": [
+      {
+       "file": "mobile-sec-02-a.jpg",
+       "scrollY": 1022
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tag": "section",
+     "id": "projects",
+     "cls": "overflow-x-clip py-24 lg:py-32",
+     "top": 1313,
+     "h": 1916,
+     "hScreens": 2.27,
+     "offGrid": 228,
+     "tiles": [
+      {
+       "file": "mobile-sec-03-a.jpg",
+       "scrollY": 1313
+      },
+      {
+       "file": "mobile-sec-03-b.jpg",
+       "scrollY": 2157
+      },
+      {
+       "file": "mobile-sec-03-c.jpg",
+       "scrollY": 2385
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tag": "section",
+     "id": "capabilities",
+     "cls": "border-t border-fg/10 py-24 lg:py-28",
+     "top": 3229,
+     "h": 1017,
+     "hScreens": 1.2,
+     "offGrid": 173,
+     "tiles": [
+      {
+       "file": "mobile-sec-04-a.jpg",
+       "scrollY": 3229
+      },
+      {
+       "file": "mobile-sec-04-b.jpg",
+       "scrollY": 3402
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tag": "section",
+     "id": "skills",
+     "cls": "border-t border-fg/10 py-24 lg:py-28",
+     "top": 4245,
+     "h": 1691,
+     "hScreens": 2,
+     "offGrid": 3,
+     "tiles": [
+      {
+       "file": "mobile-sec-05-a.jpg",
+       "scrollY": 4245
+      },
+      {
+       "file": "mobile-sec-05-b.jpg",
+       "scrollY": 5089
+      },
+      {
+       "file": "mobile-sec-05-c.jpg",
+       "scrollY": 5092
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tag": "section",
+     "id": "contact",
+     "cls": "acid-panel border-t border-fg/10 bg-acid text-bg",
+     "top": 5936,
+     "h": 386,
+     "hScreens": 0.46,
+     "offGrid": 386,
+     "tiles": [
+      {
+       "file": "mobile-sec-06-a.jpg",
+       "scrollY": 5936
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "tag": "footer",
+     "id": "",
+     "cls": "border-t border-fg/10 bg-bg text-sm text-muted",
+     "top": 6322,
+     "h": 513,
+     "hScreens": 0.61,
+     "offGrid": 513,
+     "tiles": [
+      {
+       "file": "mobile-sec-07-a.jpg",
+       "scrollY": 5991,
+       "cutTop": 331,
+       "height": 513
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  }
+ },
+ "at": "2026-11-13T13:16:12.281Z"
+}

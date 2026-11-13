@@ -9,11 +9,17 @@ export interface TranslationContent {
       viewProjects: string;
       contact: string;
     };
+    capabilities: {
+      eyebrow: string;
+      sectionTitle: string;
+      sectionSubtitle: string;
+    };
     skills: {
       sectionTitle: string;
       sectionSubtitle: string;
     };
     projects: {
+      eyebrow: string;
       sectionTitle: string;
       sectionSubtitle: string;
       sourceCode: string;
@@ -29,10 +35,8 @@ export interface TranslationContent {
       viewFull: string;
       close: string;
     };
-    goals: {
-      sectionTitle: string;
-    };
     contact: {
+      eyebrow: string;
       sectionTitle: string;
       sectionSubtitle: string;
       sendEmail: string;
@@ -50,12 +54,6 @@ export interface TranslationContent {
       toggleTheme: string;
       toggleMenu: string;
     };
-    carousel: {
-      prev: string;
-      next: string;
-      slide: string;
-      of: string;
-    };
   };
 }
 
@@ -63,24 +61,49 @@ export const translations: Record<Language, TranslationContent> = {
   th: {
     navItems: [
       { label: "แนะนำตัว", href: "#profile" },
-      { label: "ทักษะ", href: "#skills" },
       { label: "ผลงาน", href: "#projects" },
-      { label: "การศึกษา", href: "#education" },
-      { label: "ใบรับรอง", href: "#certificates" },
-      { label: "เป้าหมาย", href: "#goals" },
+      { label: "สิ่งที่ทำได้", href: "#capabilities" },
+      { label: "ทักษะและการศึกษา", href: "#skills" },
       { label: "ติดต่อ", href: "#contact" },
     ],
     portfolioData: {
       name: "นายศุภวิชญ์ หาญมนตรี",
-      role: "นักศึกษาปีที่ 3 วิทยาการคอมพิวเตอร์ มหาวิทยาลัยราชภัฏอุดรธานี",
+      role: "วิทยาการคอมพิวเตอร์ ปี 3 · ม.ราชภัฏอุดรธานี",
+      headline: "เว็บแอปและระบบหลังบ้านที่ใช้งานได้จริง",
+      summary:
+        "ผมเขียนด้วย TypeScript, Python และ WebSockets ตั้งแต่เว็บเรียลไทม์ไปจนถึงเครื่องมือคำนวณและตรวจสอบข้อมูล ทุกโปรเจกต์เปิดให้ลองและอ่านโค้ดได้",
+      facts: ["3 โปรเจกต์ออนไลน์", "English B2", "TS · Python · SQL"],
       interests: [
-        "AI",
-        "Web Development",
-        "Data Science",
-        "Backend Development",
         "Software Engineering",
+        "Full-Stack Web",
+        "Backend Development",
+        "AI",
+        "Data Science",
       ],
       avatar: "asset/profile.webp",
+      capabilities: [
+        {
+          number: "01",
+          title: "Full-Stack Web Apps",
+          description:
+            "พัฒนาหน้าเว็บที่ใช้งานได้จริงทั้งโหมดสว่างและมืด เชื่อมต่อลอจิกและระบบหลังบ้านอย่างเป็นระบบ",
+          stack: ["TypeScript", "JavaScript", "HTML/CSS", "PHP"],
+        },
+        {
+          number: "02",
+          title: "Real-Time & Backend",
+          description:
+            "สร้างการสื่อสารแบบเรียลไทม์ด้วย WebSockets พร้อมจัดการข้อมูลด้วย SQL สำหรับผู้ใช้งานพร้อมกัน",
+          stack: ["WebSockets", "Python", "C#", "SQL"],
+        },
+        {
+          number: "03",
+          title: "Data & Utility Tools",
+          description:
+            "แปลงเงื่อนไขและชุดข้อมูลที่ซับซ้อนให้เป็นเว็บเครื่องมือคำนวณและตรวจสอบที่ใช้งานได้ทันที",
+          stack: ["Python", "Data Parsing", "Azure", "Git"],
+        },
+      ],
       skills: [
         {
           title: "Programming",
@@ -105,21 +128,27 @@ export const translations: Record<Language, TranslationContent> = {
       projects: [
         {
           title: "Pop-siam",
-          description: "โปรเจ็คสันทนาการที่สร้างขึ้นเพื่อศึกษาการใช้งาน Web Sockets",
+          description:
+            "เว็บแอปพลิเคชันโต้ตอบแบบเรียลไทม์ที่สร้างขึ้นเพื่อศึกษาการใช้งาน WebSockets ในการซิงค์สถานะระหว่างผู้ใช้งาน",
+          tags: ["WebSockets", "Real-Time", "Web App"],
           image: "asset/pop-siam.webp",
           githubUrl: "https://github.com/Supawish35/Pop-siam",
           demoUrl: "https://pop-siam.onrender.com",
         },
         {
           title: "Thai-Help-Thai Calculator",
-          description: "เป็นโปรเจคที่ใช้ในการคำนวณโครงการรัฐไทยช่วยไทยพลัส",
+          description:
+            "เว็บเครื่องมือคำนวณสิทธิและยอดเงินสำหรับโครงการรัฐไทยช่วยไทยพลัส ช่วยให้ตรวจสอบผลลัพธ์ได้รวดเร็ว",
+          tags: ["Calculator", "Web App", "Logic"],
           image: "asset/image.png",
           githubUrl: "https://github.com/Supawish35/thai_help_thai",
           demoUrl: "https://thai-help-thai.onrender.com/",
         },
         {
           title: "Instagram Follow Back Detector",
-          description: "เครื่องมือสำหรับตรวจสอบและค้นหาผู้ใช้งาน Instagram ที่ไม่ได้ติดตามคุณกลับ",
+          description:
+            "เครื่องมือตรวจสอบบัญชี Instagram ที่ไม่ได้ติดตามกลับจากข้อมูลการติดตาม รองรับทั้งโหมดสว่างและมืด",
+          tags: ["Data Tool", "Web App", "Light / Dark UI"],
           image: "asset/followback-detector-light.png",
           imageDark: "asset/followback-detector-dark.png",
           githubUrl: "https://github.com/Supawish35/follow_back_detector",
@@ -128,8 +157,8 @@ export const translations: Record<Language, TranslationContent> = {
       ],
       education: [
         {
-          degree: "ปริญญาตรี (วิทยาการคอมพิวเตอร์)",
-          institution: "คณะวิทยาศาสตร์, ม.ราชภัฏอุดรธานี",
+          degree: "ปริญญาตรี วิทยาการคอมพิวเตอร์ (กำลังศึกษาชั้นปีที่ 3)",
+          institution: "คณะวิทยาศาสตร์, มหาวิทยาลัยราชภัฏอุดรธานี",
           years: "2567 - ปัจจุบัน",
         },
         {
@@ -137,15 +166,10 @@ export const translations: Record<Language, TranslationContent> = {
           institution: "โรงเรียนพรเจริญวิทยา",
           years: "2560 - 2567",
         },
-        {
-          degree: "ระดับชั้นประถมศึกษา",
-          institution: "โรงเรียนบ้านดงเสียด",
-          years: "2554 - 2560",
-        },
       ],
       certificates: [
         {
-          title: "B2 English Certificate",
+          title: "B2 English Certificate (UDRU-ET)",
           image: "asset/UDRU-ET_B2_Set1.png",
         },
       ],
@@ -166,40 +190,45 @@ export const translations: Record<Language, TranslationContent> = {
           type: "facebook",
         },
       ],
-      careerInterest: "ฉันมีความต้องการในการทำงานสาย Software Engineering และต้องการความอิสระ",
+      careerInterest:
+        "ฉันมีความต้องการในการทำงานสาย Software Engineering และต้องการความอิสระ",
     },
     ui: {
       hero: {
-        interestsLabel: "สนใจ:",
-        viewProjects: "ดูผลงานโปรเจกต์",
+        interestsLabel: "โฟกัส:",
+        viewProjects: "ดูผลงาน",
         contact: "ติดต่อ",
       },
+      capabilities: {
+        eyebrow: "What I Build",
+        sectionTitle: "สามอย่างที่ผมสร้าง",
+        sectionSubtitle: "ทักษะหลักที่ฝึกฝนและใช้งานจริงในโปรเจกต์",
+      },
       skills: {
-        sectionTitle: "ทักษะความสามารถ (Skills)",
-        sectionSubtitle: "ภาษาโปรแกรมมิ่ง เครื่องมือ และทักษะที่ใช้ในการทำงาน",
+        sectionTitle: "เครื่องมือที่ใช้",
+        sectionSubtitle: "ภาษาโปรแกรมมิ่ง เครื่องมือ และทักษะการทำงาน",
       },
       projects: {
-        sectionTitle: "ผลงาน (Projects)",
-        sectionSubtitle: "โปรเจกต์และแอปพลิเคชันที่พัฒนาขึ้น",
+        eyebrow: "Selected Work",
+        sectionTitle: "ผลงานที่ใช้งานได้จริง",
+        sectionSubtitle: "ทุกโปรเจกต์มี Live Demo และซอร์สโค้ดบน GitHub",
         sourceCode: "Source Code",
         liveDemo: "Live Demo",
       },
       education: {
-        sectionTitle: "ประวัติการศึกษา (Education)",
-        sectionSubtitle: "วุฒิการศึกษาและสถาบัน",
+        sectionTitle: "การศึกษา",
+        sectionSubtitle: "ประวัติการศึกษา",
       },
       certificates: {
-        sectionTitle: "ใบรับรอง (Certificates)",
-        sectionSubtitle: "ใบรับรองความสามารถและการทดสอบ",
+        sectionTitle: "ใบรับรอง",
+        sectionSubtitle: "ผลการทดสอบความสามารถ",
         viewFull: "ดูภาพเต็ม",
         close: "ปิด",
       },
-      goals: {
-        sectionTitle: "เป้าหมายในสายอาชีพ (Career Interest)",
-      },
       contact: {
-        sectionTitle: "ติดต่อ (Contact)",
-        sectionSubtitle: "สามารถติดต่อพูดคุย หรือส่งอีเมลมาได้ตลอดเวลา",
+        eyebrow: "Contact",
+        sectionTitle: "ติดต่อพูดคุยหรือร่วมงาน",
+        sectionSubtitle: "ส่งอีเมล ดูโค้ดบน GitHub หรือทักข้อความมาได้โดยตรง",
         sendEmail: "ส่งอีเมล",
         copyEmail: "คัดลอกอีเมล",
         copied: "คัดลอกแล้ว!",
@@ -215,35 +244,54 @@ export const translations: Record<Language, TranslationContent> = {
         toggleTheme: "เปลี่ยนธีม",
         toggleMenu: "เมนู",
       },
-      carousel: {
-        prev: "สไลด์ก่อนหน้า",
-        next: "สไลด์ถัดไป",
-        slide: "สไลด์",
-        of: "จาก",
-      },
     },
   },
   en: {
     navItems: [
-      { label: "About", href: "#profile" },
-      { label: "Skills", href: "#skills" },
-      { label: "Projects", href: "#projects" },
-      { label: "Education", href: "#education" },
-      { label: "Certificates", href: "#certificates" },
-      { label: "Goals", href: "#goals" },
+      { label: "Profile", href: "#profile" },
+      { label: "Work", href: "#projects" },
+      { label: "What I build", href: "#capabilities" },
+      { label: "Stack & Education", href: "#skills" },
       { label: "Contact", href: "#contact" },
     ],
     portfolioData: {
       name: "Supphawit Hanmontree",
-      role: "3rd-Year Computer Science Student, Udon Thani Rajabhat University",
+      role: "Computer Science, year 3 · Udon Thani Rajabhat University",
+      headline: "Web apps and backends that run live.",
+      summary:
+        "I write TypeScript, Python and SQL: real-time WebSocket apps, calculators and data tools. Every project is online, with its code on GitHub.",
+      facts: ["3 live projects", "English B2", "TS · Python · SQL"],
       interests: [
-        "AI",
-        "Web Development",
-        "Data Science",
-        "Backend Development",
         "Software Engineering",
+        "Full-Stack Web",
+        "Backend Development",
+        "AI",
+        "Data Science",
       ],
       avatar: "asset/profile.webp",
+      capabilities: [
+        {
+          number: "01",
+          title: "Full-Stack Web Apps",
+          description:
+            "Responsive web interfaces with light and dark themes, clean state handling, and working backend routes.",
+          stack: ["TypeScript", "JavaScript", "HTML/CSS", "PHP"],
+        },
+        {
+          number: "02",
+          title: "Real-Time & Backend",
+          description:
+            "WebSocket communication for live state sync between users, backed by structured SQL queries.",
+          stack: ["WebSockets", "Python", "C#", "SQL"],
+        },
+        {
+          number: "03",
+          title: "Data & Utility Tools",
+          description:
+            "Turning messy rules and exported account lists into fast browser tools anyone can run.",
+          stack: ["Python", "Data Parsing", "Azure", "Git"],
+        },
+      ],
       skills: [
         {
           title: "Programming",
@@ -268,21 +316,27 @@ export const translations: Record<Language, TranslationContent> = {
       projects: [
         {
           title: "Pop-siam",
-          description: "A hobby project for learning how WebSockets work.",
+          description:
+            "Real-time interactive web app built with WebSockets to sync live state across connected users.",
+          tags: ["WebSockets", "Real-Time", "Web App"],
           image: "asset/pop-siam.webp",
           githubUrl: "https://github.com/Supawish35/Pop-siam",
           demoUrl: "https://pop-siam.onrender.com",
         },
         {
           title: "Thai-Help-Thai Calculator",
-          description: "A calculator for the government's Thai Help Thai Plus program.",
+          description:
+            "Web calculator for the Thai Help Thai Plus program that turns eligibility rules into instant results.",
+          tags: ["Calculator", "Web App", "Logic"],
           image: "asset/image.png",
           githubUrl: "https://github.com/Supawish35/thai_help_thai",
           demoUrl: "https://thai-help-thai.onrender.com/",
         },
         {
           title: "Instagram Follow Back Detector",
-          description: "Finds the Instagram accounts that don't follow you back.",
+          description:
+            "Browser utility that compares Instagram follower lists to find accounts that do not follow back, with light and dark modes.",
+          tags: ["Data Tool", "Web App", "Light / Dark UI"],
           image: "asset/followback-detector-light.png",
           imageDark: "asset/followback-detector-dark.png",
           githubUrl: "https://github.com/Supawish35/follow_back_detector",
@@ -291,7 +345,7 @@ export const translations: Record<Language, TranslationContent> = {
       ],
       education: [
         {
-          degree: "Bachelor of Science in Computer Science",
+          degree: "B.Sc. in Computer Science (3rd Year)",
           institution: "Faculty of Science, Udon Thani Rajabhat University",
           years: "2024 - Present",
         },
@@ -300,15 +354,10 @@ export const translations: Record<Language, TranslationContent> = {
           institution: "Phon Charoen Wittaya School",
           years: "2017 - 2024",
         },
-        {
-          degree: "Primary School Certificate",
-          institution: "Ban Dong Siad School",
-          years: "2011 - 2017",
-        },
       ],
       certificates: [
         {
-          title: "B2 English Certificate",
+          title: "B2 English Certificate (UDRU-ET)",
           image: "asset/UDRU-ET_B2_Set1.png",
         },
       ],
@@ -329,40 +378,45 @@ export const translations: Record<Language, TranslationContent> = {
           type: "facebook",
         },
       ],
-      careerInterest: "I want to work in software engineering, with the freedom to work independently.",
+      careerInterest:
+        "I want to work in software engineering, with the freedom to work independently.",
     },
     ui: {
       hero: {
-        interestsLabel: "Interests:",
-        viewProjects: "View Projects",
-        contact: "Contact Me",
+        interestsLabel: "Focus:",
+        viewProjects: "View projects",
+        contact: "Contact",
+      },
+      capabilities: {
+        eyebrow: "What I Build",
+        sectionTitle: "Three things I build",
+        sectionSubtitle: "Core areas backed by shipped projects and coursework",
       },
       skills: {
-        sectionTitle: "Skills",
-        sectionSubtitle: "Languages, tools, and working skills",
+        sectionTitle: "Technical Stack",
+        sectionSubtitle: "Languages, tools, and engineering practices",
       },
       projects: {
-        sectionTitle: "Featured Projects",
-        sectionSubtitle: "Projects I've built",
+        eyebrow: "Selected Work",
+        sectionTitle: "Work that runs",
+        sectionSubtitle: "Live applications with full source code on GitHub",
         sourceCode: "Source Code",
         liveDemo: "Live Demo",
       },
       education: {
         sectionTitle: "Education",
-        sectionSubtitle: "Degrees and schools",
+        sectionSubtitle: "Academic background",
       },
       certificates: {
         sectionTitle: "Certificates",
-        sectionSubtitle: "Certificates and test results",
+        sectionSubtitle: "Verified language proficiency",
         viewFull: "View Full",
         close: "Close",
       },
-      goals: {
-        sectionTitle: "Career Goals",
-      },
       contact: {
-        sectionTitle: "Get In Touch",
-        sectionSubtitle: "Reach out about work, projects, or questions.",
+        eyebrow: "Contact",
+        sectionTitle: "Get in touch.",
+        sectionSubtitle: "Email me directly, read my code on GitHub, or send a message.",
         sendEmail: "Send Email",
         copyEmail: "Copy Email",
         copied: "Copied!",
@@ -377,12 +431,6 @@ export const translations: Record<Language, TranslationContent> = {
         switchLanguage: "Switch Language",
         toggleTheme: "Toggle Theme",
         toggleMenu: "Toggle Menu",
-      },
-      carousel: {
-        prev: "Previous slide",
-        next: "Next slide",
-        slide: "Slide",
-        of: "of",
       },
     },
   },

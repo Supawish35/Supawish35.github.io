@@ -1,115 +1,124 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { CardSlider } from './CardSlider';
-import { ProjectItem } from '../types';
-
-const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-    />
-  </svg>
-);
 
 export const Projects: React.FC = () => {
-  const { t } = useLanguage();
-  const { projects } = t.portfolioData;
+  const { language, t } = useLanguage();
+  const projects = t.portfolioData.projects;
+  const github = t.portfolioData.contacts.find((c) => c.type === 'github');
+  const stampLabel = language === 'th' ? 'ใช้งานจริง' : 'OFF THE GRID';
 
   return (
-    <section id="projects" className="py-24 border-b border-stone-900/5 dark:border-white/5">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="mb-14" data-reveal>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-heading text-stone-900 dark:text-stone-100 mb-3">
+    <section id="projects" className="overflow-x-clip py-24 lg:py-32">
+      <div className="wrap grid items-start gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+        {/* Sticky Left Column */}
+        <div className="lg:sticky lg:top-28">
+          <p className="stretch-narrow mb-4 text-xs uppercase tracking-[0.25em] text-acid">
+            {t.ui.projects.eyebrow}
+          </p>
+          <h2 className="stretch-wide mb-6 text-4xl font-black leading-none tracking-[-0.025em] text-fg sm:text-5xl">
             {t.ui.projects.sectionTitle}
           </h2>
-          <p className="text-base sm:text-lg text-stone-600 dark:text-stone-400">
+          <p className="mb-8 max-w-md text-base leading-relaxed text-muted sm:text-lg">
             {t.ui.projects.sectionSubtitle}
           </p>
+          {github && (
+            <a
+              href={github.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-fg underline decoration-acid decoration-2 underline-offset-8 transition-colors hover:text-acid"
+            >
+              {t.ui.contact.openGithub}
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+            </a>
+          )}
         </div>
 
-        {/* Projects Slide Deck */}
-        <div data-reveal>
-          <CardSlider<ProjectItem>
-            items={projects}
-            ariaLabel={t.ui.projects.sectionTitle}
-            prevLabel={t.ui.carousel.prev}
-            nextLabel={t.ui.carousel.next}
-            slideLabel={t.ui.carousel.slide}
-            ofLabel={t.ui.carousel.of}
-            maxDesktopColumns={3}
-            renderItem={(project) => (
-              <div className="w-full h-full rounded-2xl overflow-hidden flex flex-col group hover:-translate-y-1 transition-all duration-200 glass glass-hover">
-                {/* Project Image Frame */}
-                <div className="relative overflow-hidden aspect-video border-b bg-black/5 dark:bg-white/5 border-stone-900/10 dark:border-white/10">
-                  {project.imageDark ? (
-                    <>
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 dark:hidden"
-                      />
-                      <img
-                        src={project.imageDark}
-                        alt={project.title}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 hidden dark:block"
-                      />
-                    </>
+        {/* Right Column: Editorial Project Stack */}
+        <div className="space-y-16">
+          {projects.map((p, idx) => {
+            const isOffGrid = idx === 1;
+            const imgSrc = p.imageDark ?? p.image;
+            const primaryTag = p.tags?.[0] ?? 'Web App';
+            const secondaryTags = p.tags?.slice(1).join(' · ');
+
+            return (
+              <article key={p.title} className="group">
+                <a
+                  href={p.demoUrl ?? p.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={p.title}
+                  className="block"
+                >
+                  {isOffGrid ? (
+                    <div className="relative border border-fg/20 bg-surface shadow-2xl transition-all duration-300 lg:translate-x-5 lg:rotate-[1.2deg] group-hover:rotate-0 group-hover:border-acid/70">
+                      <span className="absolute -left-3 -top-3 z-10 bg-acid px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-bg">
+                        {stampLabel}
+                      </span>
+                      <div className="frame overflow-hidden bg-bg">
+                        <img
+                          src={imgSrc}
+                          alt={p.title}
+                          className="aspect-[4/3] w-full object-cover object-top"
+                        />
+                      </div>
+                    </div>
                   ) : (
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
+                    <div className="border border-fg/15 bg-paper p-2.5 transition-colors duration-300 group-hover:border-acid/60">
+                      <div className="frame overflow-hidden bg-bg">
+                        <img
+                          src={imgSrc}
+                          alt={p.title}
+                          className={`aspect-[4/3] w-full object-cover ${
+                            idx === 2 ? 'object-left-top' : 'object-center'
+                          }`}
+                        />
+                      </div>
+                    </div>
                   )}
-                </div>
+                </a>
 
-                {/* Project Info & Actions */}
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-lg sm:text-xl font-bold mb-2.5 font-heading text-stone-900 dark:text-stone-100">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-stone-600 dark:text-stone-400 mb-6 leading-relaxed flex-1">
-                    {project.description}
-                  </p>
+                <div className="mt-5 flex flex-wrap items-baseline justify-between gap-4">
+                  <div>
+                    <h3 className="stretch-wide text-xl font-bold tracking-[-0.025em] text-fg transition-colors duration-200 group-hover:text-acid">
+                      {p.title}
+                    </h3>
+                    <p className="mt-1 text-xs uppercase tracking-[0.18em] text-muted">
+                      {primaryTag}{secondaryTags ? ` · ${secondaryTags}` : ''}
+                    </p>
+                  </div>
 
-                  {/* Actions */}
-                  <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t mt-auto border-stone-900/10 dark:border-white/10">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-stone-800 dark:text-stone-200 font-semibold text-xs sm:text-sm glass-soft glass-hover"
-                    >
-                      <GithubIcon className="w-4 h-4" />
-                      <span>{t.ui.projects.sourceCode}</span>
-                    </a>
-
-                    {project.demoUrl && (
+                  <div className="flex items-center gap-5 text-sm font-semibold">
+                    {p.demoUrl && (
                       <a
-                        href={project.demoUrl}
+                        href={p.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand hover:bg-brand-800 text-white font-semibold text-xs sm:text-sm transition-colors shadow-sm"
+                        className="inline-flex min-h-[44px] items-center gap-1 text-acid underline decoration-acid/50 decoration-2 underline-offset-8 transition-colors hover:text-fg"
                       >
-                        <ExternalLink className="w-4 h-4" />
-                        <span>{t.ui.projects.liveDemo}</span>
+                        {t.ui.projects.liveDemo}
+                        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                       </a>
                     )}
+                    <a
+                      href={p.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-[44px] items-center gap-1 text-muted underline decoration-fg/20 underline-offset-8 transition-colors hover:text-fg"
+                    >
+                      {t.ui.projects.sourceCode}
+                    </a>
                   </div>
                 </div>
-              </div>
-            )}
-          />
+
+                <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
+                  {p.description}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
