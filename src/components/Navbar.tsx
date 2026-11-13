@@ -23,8 +23,23 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [t.navItems]);
 
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-fg/10 bg-[#131310]/85 backdrop-blur-md">
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-fg/10 bg-[#131310]/85 backdrop-blur-md">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-acid focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-bg"
@@ -78,8 +93,15 @@ export const Navbar: React.FC = () => {
         </button>
       </nav>
 
+      </header>
+
       {open && (
-        <div className="fixed inset-x-0 bottom-0 top-20 z-40 overflow-auto bg-bg md:hidden">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={t.ui.navbar.toggleMenu}
+          className="fixed inset-x-0 bottom-0 top-20 z-50 overflow-auto bg-bg md:hidden"
+        >
           <div className="wrap flex flex-col py-8">
             {t.navItems.map((item) => (
               <a
@@ -103,6 +125,6 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 };

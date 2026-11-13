@@ -106,7 +106,7 @@ export const translations: Record<Language, TranslationContent> = {
       ],
       skills: [
         {
-          title: "Programming",
+          title: "Programming language",
           icon: "braces",
           skills: [
             "Python, C, PHP",
@@ -294,7 +294,7 @@ export const translations: Record<Language, TranslationContent> = {
       ],
       skills: [
         {
-          title: "Programming",
+          title: "Programming language",
           icon: "braces",
           skills: [
             "Python, C, PHP",

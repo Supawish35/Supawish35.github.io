@@ -19,23 +19,23 @@ export const Hero: React.FC = () => {
   const email = contacts.find((c) => c.type === 'email');
   const facebook = contacts.find((c) => c.type === 'facebook');
 
-  const greeting = language === 'th' ? 'สวัสดี.' : 'Hello.';
+  const greeting = language === 'th' ? 'สวัสดีครับ' : 'Hello.';
   const stamp = language === 'th' ? 'พร้อมทำงาน' : 'CS · YEAR 3';
 
   return (
     <section id="profile" className="grid min-h-[100dvh] pt-20 lg:grid-cols-2">
       {/* Left Column: Acid Lime Editorial Panel */}
-      <div className="acid-panel relative flex flex-col justify-between overflow-visible bg-acid px-6 pb-10 pt-10 text-bg sm:px-12 lg:pt-12 lg:rounded-tr-[2.5rem]">
+      <div className="acid-panel relative flex flex-col justify-between overflow-visible bg-acid px-6 pb-10 pt-14 text-bg sm:px-12 lg:pt-12 lg:rounded-tr-[2.5rem]">
         {/* Floating Stamp Badge */}
         <div
           aria-hidden="true"
-          className="absolute right-6 top-6 rotate-6 border border-bg/30 bg-bg px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-acid shadow-lg sm:right-10 sm:top-8"
+          className="absolute right-6 top-4 rotate-6 border border-bg/30 bg-bg px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-acid shadow-lg sm:right-10 sm:top-8"
         >
           {stamp}
         </div>
 
         <div data-enter className="pt-2">
-          <h1 className="stretch-wide text-[clamp(4.25rem,11.5vw,10.5rem)] font-black leading-[0.88] tracking-[-0.03em] text-bg">
+          <h1 className="stretch-wide text-[clamp(4.25rem,10.5vw,10.5rem)] font-black leading-[0.88] tracking-[-0.03em] text-bg">
             {greeting}
           </h1>
         </div>
