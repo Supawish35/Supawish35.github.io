@@ -3,6 +3,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { MetricsStrip } from './components/MetricsStrip';
+import { AboutMe } from './components/AboutMe';
 import { Projects } from './components/Projects';
 import { Capabilities } from './components/Capabilities';
 import { Skills } from './components/Skills';
@@ -14,6 +15,7 @@ export const App: React.FC = () => (
     <main id="main-content">
       <Hero />
       <MetricsStrip />
+      <AboutMe />
       <Projects />
       <Capabilities />
       <Skills />

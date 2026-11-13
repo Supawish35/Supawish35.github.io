@@ -45,6 +45,11 @@ export interface CapabilityItem {
   stack: string[];
 }
 
+export interface AboutItem {
+  label: string;
+  value: string;
+}
+
 export interface PortfolioData {
   name: string;
   role: string;
@@ -53,6 +58,13 @@ export interface PortfolioData {
   facts: string[];
   interests: string[];
   avatar: string;
+  about: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    body: string;
+    details: AboutItem[];
+  };
   capabilities: CapabilityItem[];
   skills: SkillCategory[];
   projects: ProjectItem[];

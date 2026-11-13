@@ -5,8 +5,8 @@
    "width": 1440,
    "height": 900,
    "navH": 0,
-   "scrollHeight": 5807,
-   "screens": 6.45,
+   "scrollHeight": 6533,
+   "screens": 7.26,
    "sections": [
     {
      "n": 1,
@@ -43,94 +43,110 @@
     {
      "n": 3,
      "tag": "section",
-     "id": "projects",
-     "cls": "overflow-x-clip py-24 lg:py-32",
+     "id": "about",
+     "cls": "border-b border-fg/10 py-24 lg:py-28",
      "top": 1058,
-     "h": 2323,
-     "hScreens": 2.58,
-     "offGrid": 523,
+     "h": 726,
+     "hScreens": 0.81,
+     "offGrid": 726,
      "tiles": [
       {
        "file": "desktop-sec-03-a.jpg",
        "scrollY": 1058
-      },
-      {
-       "file": "desktop-sec-03-b.jpg",
-       "scrollY": 1958
-      },
-      {
-       "file": "desktop-sec-03-c.jpg",
-       "scrollY": 2481
       }
      ]
     },
     {
      "n": 4,
      "tag": "section",
-     "id": "capabilities",
-     "cls": "border-t border-fg/10 py-24 lg:py-28",
-     "top": 3381,
-     "h": 697,
-     "hScreens": 0.77,
-     "offGrid": 697,
+     "id": "projects",
+     "cls": "overflow-x-clip py-24 lg:py-32",
+     "top": 1784,
+     "h": 2323,
+     "hScreens": 2.58,
+     "offGrid": 523,
      "tiles": [
       {
        "file": "desktop-sec-04-a.jpg",
-       "scrollY": 3381
+       "scrollY": 1784
+      },
+      {
+       "file": "desktop-sec-04-b.jpg",
+       "scrollY": 2684
+      },
+      {
+       "file": "desktop-sec-04-c.jpg",
+       "scrollY": 3207
       }
      ]
     },
     {
      "n": 5,
      "tag": "section",
-     "id": "skills",
+     "id": "capabilities",
      "cls": "border-t border-fg/10 py-24 lg:py-28",
-     "top": 4078,
-     "h": 1195,
-     "hScreens": 1.33,
-     "offGrid": 295,
+     "top": 4107,
+     "h": 697,
+     "hScreens": 0.77,
+     "offGrid": 697,
      "tiles": [
       {
        "file": "desktop-sec-05-a.jpg",
-       "scrollY": 4078
-      },
-      {
-       "file": "desktop-sec-05-b.jpg",
-       "scrollY": 4373
+       "scrollY": 4107
       }
      ]
     },
     {
      "n": 6,
      "tag": "section",
+     "id": "skills",
+     "cls": "border-t border-fg/10 py-24 lg:py-28",
+     "top": 4804,
+     "h": 1195,
+     "hScreens": 1.33,
+     "offGrid": 295,
+     "tiles": [
+      {
+       "file": "desktop-sec-06-a.jpg",
+       "scrollY": 4804
+      },
+      {
+       "file": "desktop-sec-06-b.jpg",
+       "scrollY": 5099
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "tag": "section",
      "id": "contact",
      "cls": "acid-panel border-t border-fg/10 bg-acid text-bg",
-     "top": 5273,
+     "top": 5999,
      "h": 329,
      "hScreens": 0.37,
      "offGrid": 329,
      "tiles": [
       {
-       "file": "desktop-sec-06-a.jpg",
-       "scrollY": 4907,
+       "file": "desktop-sec-07-a.jpg",
+       "scrollY": 5633,
        "cutTop": 366,
        "height": 329
       }
      ]
     },
     {
-     "n": 7,
+     "n": 8,
      "tag": "footer",
      "id": "",
      "cls": "border-t border-fg/10 bg-bg text-sm text-muted",
-     "top": 5602,
+     "top": 6328,
      "h": 205,
      "hScreens": 0.23,
      "offGrid": 205,
      "tiles": [
       {
-       "file": "desktop-sec-07-a.jpg",
-       "scrollY": 4907,
+       "file": "desktop-sec-08-a.jpg",
+       "scrollY": 5633,
        "cutTop": 695,
        "height": 205
       }
@@ -288,5 +304,5 @@
    "consoleErrors": []
   }
  },
- "at": "2026-11-13T15:15:00.096Z"
+ "at": "2026-11-13T15:24:32.188Z"
 }

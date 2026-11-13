@@ -60,7 +60,7 @@ export interface TranslationContent {
 export const translations: Record<Language, TranslationContent> = {
   th: {
     navItems: [
-      { label: "แนะนำตัว", href: "#profile" },
+      { label: "เกี่ยวกับผม", href: "#about" },
       { label: "ผลงาน", href: "#projects" },
       { label: "สิ่งที่ทำได้", href: "#capabilities" },
       { label: "ทักษะและการศึกษา", href: "#skills" },
@@ -81,6 +81,18 @@ export const translations: Record<Language, TranslationContent> = {
         "Data Science",
       ],
       avatar: "asset/profile.webp",
+      about: {
+        eyebrow: "ABOUT ME",
+        title: "ชอบลงมือสร้างให้ใช้งานได้จริง",
+        lead: "ผมชื่อศุภวิชญ์ หาญมนตรี นักศึกษาชั้นปีที่ 3 สาขาวิทยาการคอมพิวเตอร์ มหาวิทยาลัยราชภัฏอุดรธานี เวลาเจอโจทย์หรือปัญหาที่น่าสนใจ ผมชอบแปลงมันให้เป็นเว็บหรือเครื่องมือที่เปิดใช้งานได้จริงทันที",
+        body: "ที่ผ่านมาผมสร้างทั้งเว็บโต้ตอบแบบเรียลไทม์อย่าง Pop-siam ด้วย WebSockets เครื่องมือคำนวณสิทธิ Thai-Help-Thai และเว็บตรวจสอบผู้ติดตาม Instagram ด้วย TypeScript, Python และ SQL ผมสนใจงานสาย Software Engineering ทั้ง Full-Stack, Backend, AI และ Data Science รวมถึงสภาพแวดล้อมที่เปิดโอกาสให้คิดและทำงานได้อย่างอิสระ",
+        details: [
+          { label: "การศึกษา", value: "วิทยาการคอมพิวเตอร์ ปี 3 · ม.ราชภัฏอุดรธานี" },
+          { label: "ภาษาและเครื่องมือหลัก", value: "TypeScript · Python · C# · SQL · WebSockets" },
+          { label: "ภาษาอังกฤษ", value: "ระดับ B2 Upper-Intermediate (UDRU-ET)" },
+          { label: "สายงานที่สนใจ", value: "Software Engineering ที่ทำงานได้อย่างอิสระ" },
+        ],
+      },
       capabilities: [
         {
           number: "01",
@@ -248,7 +260,7 @@ export const translations: Record<Language, TranslationContent> = {
   },
   en: {
     navItems: [
-      { label: "Profile", href: "#profile" },
+      { label: "About Me", href: "#about" },
       { label: "Work", href: "#projects" },
       { label: "What I build", href: "#capabilities" },
       { label: "Stack & Education", href: "#skills" },
@@ -269,6 +281,18 @@ export const translations: Record<Language, TranslationContent> = {
         "Data Science",
       ],
       avatar: "asset/profile.webp",
+      about: {
+        eyebrow: "ABOUT ME",
+        title: "I learn by shipping tools people can use.",
+        lead: "I'm Supphawit Hanmontree, a third-year Computer Science student at Udon Thani Rajabhat University. Rather than stopping at class exercises, I like turning everyday problems and ideas into live web apps anyone can open and test.",
+        body: "Across projects like Pop-siam (real-time WebSocket state sync), Thai-Help-Thai Calculator, and Instagram Follow Back Detector, I build with TypeScript, Python, C#, and SQL. I focus on Software Engineering—spanning Full-Stack Web, Backend, AI, and Data Science—and want to work with the freedom to build independently.",
+        details: [
+          { label: "Education", value: "B.Sc. Computer Science (Year 3) · UDRU" },
+          { label: "Core Stack", value: "TypeScript · Python · C# · SQL · WebSockets" },
+          { label: "English", value: "B2 Upper-Intermediate (UDRU-ET)" },
+          { label: "Direction", value: "Software Engineering with independence to build" },
+        ],
+      },
       capabilities: [
         {
           number: "01",
