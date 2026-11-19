@@ -14,36 +14,46 @@ const GithubGlyph: React.FC = () => (
 
 export const Hero: React.FC = () => {
   const { language, t } = useLanguage();
-  const { name, role, headline, summary, avatar, contacts } = t.portfolioData;
+  const { name, role, availability, headline, summary, coreStack, avatar, contacts } =
+    t.portfolioData;
   const github = contacts.find((c) => c.type === 'github');
   const email = contacts.find((c) => c.type === 'email');
   const facebook = contacts.find((c) => c.type === 'facebook');
 
   const greeting = language === 'th' ? 'สวัสดีครับ' : 'Hello.';
-  const stamp = language === 'th' ? 'พร้อมทำงาน' : 'CS · YEAR 3';
 
   return (
-    <section id="profile" className="grid min-h-[100dvh] pt-20 lg:grid-cols-2">
+    <section id="profile" className="grid pt-20 lg:min-h-[min(100dvh,880px)] lg:grid-cols-2">
       {/* Left Column: Acid Lime Editorial Panel */}
-      <div className="acid-panel relative flex flex-col justify-between overflow-visible bg-acid px-6 pb-10 pt-14 text-bg sm:px-12 lg:pt-12 lg:rounded-tr-[2.5rem]">
-        {/* Floating Stamp Badge */}
-        <div
-          aria-hidden="true"
-          className="absolute right-6 top-4 rotate-6 border border-bg/30 bg-bg px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-acid shadow-lg sm:right-10 sm:top-8"
-        >
-          {stamp}
+      <div className="acid-panel relative flex flex-col justify-between gap-8 overflow-visible bg-acid px-6 pb-10 pt-8 text-bg sm:px-10 sm:pt-10 lg:gap-10 lg:rounded-tr-[2.5rem] lg:px-12 lg:py-10">
+        {/* Top Status Header Bar */}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-bg/20 pb-4">
+          <span className="stretch-narrow text-xs font-bold uppercase tracking-[0.18em] text-bg/85">
+            {t.ui.hero.badgeLeft}
+          </span>
+          <span className="inline-flex items-center gap-2 bg-bg px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-acid shadow-sm">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-acid" aria-hidden="true" />
+            {availability}
+          </span>
         </div>
 
-        <div data-enter className="pt-2">
-          <h1 className="stretch-wide text-[clamp(4.25rem,10.5vw,10.5rem)] font-black leading-[0.88] tracking-[-0.03em] text-bg">
+        {/* Display Greeting */}
+        <div data-enter className="py-1">
+          <h1
+            className={`stretch-wide font-black tracking-[-0.03em] text-bg ${
+              language === 'th'
+                ? 'text-[clamp(3.35rem,7.2vw,6.75rem)] leading-[1.08]'
+                : 'text-[clamp(4.25rem,9vw,8.5rem)] leading-[0.92]'
+            }`}
+          >
             {greeting}
           </h1>
         </div>
 
         {/* Bottom Row: Tilted Polaroid + Overlapping 2x2 Social Grid + Identity Lockup */}
-        <div className="mt-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-          <div className="relative ml-4 w-[210px] sm:ml-6 sm:w-[240px] lg:ml-4">
-            <div className="bg-paper p-2 pb-7 shadow-2xl transition-transform duration-300 rotate-[-2deg] hover:rotate-0">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+          <div className="relative ml-4 w-[205px] shrink-0 sm:ml-6 sm:w-[225px] lg:ml-4">
+            <div className="rotate-[-1.5deg] bg-paper p-2 pb-6 shadow-2xl transition-transform duration-300 hover:rotate-0">
               <img
                 src={avatar}
                 alt={name}
@@ -53,7 +63,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Overlapping 2x2 Square Grid */}
-            <div className="absolute -left-4 bottom-6 z-10 grid grid-cols-2 gap-px border border-acid/40 bg-acid/40 shadow-xl sm:-left-5">
+            <div className="absolute -left-4 bottom-5 z-10 grid grid-cols-2 gap-px border border-acid/40 bg-acid/40 shadow-xl sm:-left-5">
               {github && (
                 <a
                   href={github.url}
@@ -95,38 +105,65 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          <div className="sm:pb-2 sm:text-right">
+          <div className="sm:pb-1 sm:text-right">
             <p className="stretch-wide text-2xl font-bold leading-tight tracking-[-0.02em] text-bg sm:text-3xl">
               {name}
             </p>
-            <p className="stretch-narrow mt-1.5 max-w-[260px] text-xs uppercase tracking-[0.2em] text-bg/80 sm:ml-auto sm:text-sm">
+            <p className="stretch-narrow mt-1.5 max-w-[270px] text-xs font-medium uppercase tracking-[0.16em] text-bg/80 sm:ml-auto sm:text-sm">
               {role}
             </p>
           </div>
         </div>
       </div>
 
-      {/* Right Column: Dark Intro & Pill Actions */}
-      <div data-enter className="flex flex-col justify-center gap-8 px-6 py-12 sm:px-12 lg:py-16 lg:px-16 xl:px-20">
-        <p className="max-w-xl text-2xl font-light leading-snug text-fg sm:text-3xl">
+      {/* Right Column: Dark Value Proposition, Core Stack & Pill Actions */}
+      <div
+        data-enter
+        className="flex flex-col justify-center gap-6 px-6 py-12 sm:px-12 lg:px-14 lg:py-16 xl:px-20"
+      >
+        <div className="flex items-center gap-3">
+          <span className="h-2 w-2 bg-acid" aria-hidden="true" />
+          <p className="stretch-narrow text-xs font-semibold uppercase tracking-[0.22em] text-acid">
+            {t.ui.hero.eyebrow}
+          </p>
+        </div>
+
+        <h2 className="stretch-wide max-w-xl text-3xl font-bold leading-[1.15] tracking-[-0.025em] text-fg sm:text-4xl lg:text-[2.65rem]">
           {headline}
-        </p>
+        </h2>
 
         <p className="max-w-xl text-base leading-relaxed text-muted sm:text-lg">
           {summary}
         </p>
 
-        <div className="flex flex-wrap items-center gap-4 pt-2">
-          <a href="#projects" className="pill-btn bg-acid text-bg">
+        <ul className="flex flex-wrap gap-2" aria-label="Core stack">
+          {coreStack.map((tech) => (
+            <li
+              key={tech}
+              className="border border-fg/15 bg-surface/65 px-3 py-1.5 text-xs font-medium tracking-wide text-fg/90"
+            >
+              {tech}
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex flex-wrap items-center gap-3 pt-2">
+          <a href="#projects" className="pill-btn bg-acid font-bold text-bg">
             {t.ui.hero.viewProjects}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+          <a
+            href="#contact"
+            className="pill-btn border border-fg/25 bg-surface/60 text-fg hover:border-acid hover:text-acid"
+          >
+            {t.ui.hero.contact}
           </a>
           {github && (
             <a
               href={github.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="pill-btn bg-paper text-bg"
+              className="inline-flex min-h-[44px] items-center gap-1.5 px-3 text-sm font-semibold text-muted underline decoration-fg/25 underline-offset-8 transition-colors hover:text-acid hover:decoration-acid"
             >
               GitHub
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

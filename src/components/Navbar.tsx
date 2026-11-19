@@ -5,16 +5,19 @@ import { useLanguage } from '../context/LanguageContext';
 export const Navbar: React.FC = () => {
   const { language, toggleLanguage, t } = useLanguage();
   const [open, setOpen] = useState(false);
-  const [activeHref, setActiveHref] = useState('#profile');
+  const [activeHref, setActiveHref] = useState('');
 
   useEffect(() => {
     const ids = t.navItems.map((i) => i.href.replace('#', ''));
     const onScroll = () => {
-      const y = window.scrollY + 140;
-      let current = `#${ids[0]}`;
+      const y = window.scrollY + 150;
+      let current = '';
       for (const id of ids) {
         const el = document.getElementById(id);
         if (el && el.offsetTop <= y) current = `#${id}`;
+      }
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24 && ids.length > 0) {
+        current = `#${ids[ids.length - 1]}`;
       }
       setActiveHref(current);
     };
@@ -40,59 +43,62 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 border-b border-fg/10 bg-[#131310]/85 backdrop-blur-md">
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-acid focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-bg"
-      >
-        Skip to content
-      </a>
-      <nav className="wrap flex h-20 items-center justify-between gap-4" aria-label="Main">
         <a
-          href="#profile"
-          className="group flex items-baseline gap-2.5 text-fg transition-colors duration-200 hover:text-acid"
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-acid focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-bg"
         >
-          <span className="stretch-wide text-lg font-bold tracking-[-0.025em]">Supphawit</span>
-          <span className="stretch-narrow hidden text-xs uppercase tracking-[0.2em] text-muted sm:inline">
-            [ CS · Year 3 ]
-          </span>
+          Skip to content
         </a>
-
-        <div className="hidden items-center gap-8 md:flex lg:gap-10">
-          {t.navItems.map((item) => {
-            const isActive = activeHref === item.href;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className={`py-2 text-sm tracking-[0.02em] transition-colors duration-200 hover:text-acid ${
-                  isActive
-                    ? 'text-fg underline decoration-acid decoration-2 underline-offset-8'
-                    : 'text-muted'
-                }`}
-              >
-                {item.label}
-              </a>
-            );
-          })}
-          <button
-            onClick={toggleLanguage}
-            aria-label={t.ui.navbar.switchLanguage}
-            className="inline-flex h-11 min-w-[44px] items-center justify-center rounded-full border border-fg/20 px-4 text-xs font-semibold tracking-wider text-fg transition-colors duration-200 hover:border-acid hover:text-acid"
+        <nav className="wrap flex h-20 items-center justify-between gap-4" aria-label="Main">
+          <a
+            href="#profile"
+            className="group flex items-baseline gap-2.5 text-fg transition-colors duration-200 hover:text-acid"
           >
-            {language === 'th' ? 'EN' : 'TH'}
+            <span className="stretch-wide text-lg font-bold tracking-[-0.025em]">Supphawit</span>
+            <span className="stretch-narrow hidden text-xs uppercase tracking-[0.2em] text-muted sm:inline">
+              [ CS · Year 3 ]
+            </span>
+          </a>
+
+          <div className="hidden items-center gap-7 md:flex lg:gap-9">
+            {t.navItems.map((item) => {
+              const isActive = activeHref === item.href;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`py-2 text-sm tracking-[0.02em] transition-colors duration-200 hover:text-acid ${
+                    isActive
+                      ? 'text-fg underline decoration-acid decoration-2 underline-offset-8'
+                      : 'text-muted'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              aria-label={t.ui.navbar.switchLanguage}
+              className="inline-flex h-11 items-center justify-center gap-1.5 rounded-full border border-fg/20 px-4 text-xs font-semibold tracking-wider transition-colors duration-200 hover:border-acid"
+            >
+              <span className={language === 'th' ? 'text-acid' : 'text-muted'}>TH</span>
+              <span className="text-fg/30" aria-hidden="true">/</span>
+              <span className={language === 'en' ? 'text-acid' : 'text-muted'}>EN</span>
+            </button>
+          </div>
+
+          <button
+            type="button"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-fg/20 text-fg transition-colors hover:border-acid hover:text-acid md:hidden"
+            aria-expanded={open}
+            aria-label={t.ui.navbar.toggleMenu}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
           </button>
-        </div>
-
-        <button
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-fg/20 text-fg transition-colors hover:border-acid hover:text-acid md:hidden"
-          aria-expanded={open}
-          aria-label={t.ui.navbar.toggleMenu}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </nav>
-
+        </nav>
       </header>
 
       {open && (
@@ -114,13 +120,14 @@ export const Navbar: React.FC = () => {
               </a>
             ))}
             <button
+              type="button"
               onClick={() => {
                 toggleLanguage();
                 setOpen(false);
               }}
               className="pill-btn mt-8 w-full bg-acid text-bg"
             >
-              {language === 'th' ? 'Switch to English' : 'สลับเป็นภาษาไทย'}
+              {language === 'th' ? 'Switch to English (EN)' : 'สลับเป็นภาษาไทย (TH)'}
             </button>
           </div>
         </div>

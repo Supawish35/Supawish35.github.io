@@ -14,13 +14,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 5.5rem;
     background-color: #131310;
     color: #F5F3EB;
   }
   body {
     @apply bg-bg font-sans text-fg antialiased;
     min-width: 320px;
+    overflow-x: clip;
     font-size: 16px;
     line-height: 1.5;
   }
@@ -55,15 +56,15 @@
   }
 
   .pill-btn {
-    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-8 text-sm font-semibold
-      transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98];
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-7 text-sm font-semibold
+      transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98];
   }
 
   .frame img {
     transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
   .group:hover .frame img {
-    transform: scale(1.025);
+    transform: scale(1.02);
   }
 }
 
@@ -72,13 +73,28 @@
   to { opacity: 1; transform: none; }
 }
 [data-enter] > * {
-  animation: enter 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: enter 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
-[data-enter] > *:nth-child(2) { animation-delay: 0.07s; }
-[data-enter] > *:nth-child(3) { animation-delay: 0.14s; }
-[data-enter] > *:nth-child(4) { animation-delay: 0.21s; }
+[data-enter] > *:nth-child(2) { animation-delay: 0.06s; }
+[data-enter] > *:nth-child(3) { animation-delay: 0.12s; }
+[data-enter] > *:nth-child(4) { animation-delay: 0.18s; }
+[data-enter] > *:nth-child(5) { animation-delay: 0.24s; }
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }

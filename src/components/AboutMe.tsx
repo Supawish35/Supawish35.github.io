@@ -7,12 +7,12 @@ export const AboutMe: React.FC = () => {
 
   return (
     <section id="about" className="border-b border-fg/10 py-24 lg:py-28">
-      <div className="wrap grid items-start gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+      <div data-reveal className="wrap grid items-start gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
         <div>
           <p className="stretch-narrow mb-4 text-xs uppercase tracking-[0.25em] text-acid">
             {about.eyebrow}
           </p>
-          <h2 className="stretch-wide text-4xl font-black leading-[1.02] tracking-[-0.025em] text-fg sm:text-5xl">
+          <h2 className="stretch-wide text-4xl font-black leading-[1.08] tracking-[-0.025em] text-fg sm:text-5xl">
             {about.title}
           </h2>
         </div>

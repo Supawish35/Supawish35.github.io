@@ -10,6 +10,14 @@ export const Contact: React.FC = () => {
   const address = email?.url.replace('mailto:', '') ?? '';
   const others = contacts.filter((c) => c.type !== 'email');
 
+  const internshipHref = `mailto:${address}?subject=${encodeURIComponent(
+    t.ui.contact.internshipSubject
+  )}&body=${encodeURIComponent(t.ui.contact.internshipBody)}`;
+
+  const freelanceHref = `mailto:${address}?subject=${encodeURIComponent(
+    t.ui.contact.freelanceSubject
+  )}&body=${encodeURIComponent(t.ui.contact.freelanceBody)}`;
+
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(address);
@@ -24,12 +32,15 @@ export const Contact: React.FC = () => {
     <>
       {/* Full-Bleed Acid Lime CTA Band */}
       <section id="contact" className="acid-panel border-t border-fg/10 bg-acid text-bg">
-        <div className="wrap flex flex-col justify-between gap-10 py-20 lg:flex-row lg:items-end lg:py-24">
-          <div className="max-w-3xl">
+        <div
+          data-reveal
+          className="wrap flex flex-col justify-between gap-10 py-20 lg:flex-row lg:items-end lg:py-24"
+        >
+          <div className="max-w-2xl">
             <p className="stretch-narrow mb-4 text-xs uppercase tracking-[0.25em] text-bg/80">
               {t.ui.contact.eyebrow}
             </p>
-            <h2 className="stretch-wide text-[2rem] font-black leading-[1.02] tracking-[-0.025em] text-bg sm:text-5xl lg:text-6xl">
+            <h2 className="stretch-wide text-[2rem] font-black leading-[1.06] tracking-[-0.025em] text-bg sm:text-5xl">
               {t.ui.contact.sectionTitle}
             </h2>
             <p className="mt-4 max-w-xl text-base text-bg/80 sm:text-lg">
@@ -38,18 +49,27 @@ export const Contact: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
+            <a href={internshipHref} className="pill-btn min-h-[56px] bg-bg px-7 py-3 font-bold text-paper">
+              {t.ui.contact.internshipCta}
+              <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+            </a>
             <a
-              href={email?.url}
-              className="pill-btn h-14 bg-bg px-10 text-paper"
+              href={freelanceHref}
+              className="pill-btn min-h-[56px] border-2 border-bg bg-transparent px-7 py-3 font-bold text-bg transition-colors hover:bg-bg hover:text-acid"
             >
-              {t.ui.contact.sendEmail}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              {t.ui.contact.freelanceCta}
+              <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
             </a>
             <button
+              type="button"
               onClick={copy}
-              className="pill-btn h-14 border border-bg/40 px-8 text-bg transition-colors hover:bg-bg hover:text-acid"
+              className="pill-btn min-h-[56px] border border-bg/40 px-6 py-3 text-bg transition-colors hover:bg-bg hover:text-acid"
             >
-              {copied ? <Check className="h-4 w-4" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
+              {copied ? (
+                <Check className="h-4 w-4 shrink-0" aria-hidden="true" />
+              ) : (
+                <Copy className="h-4 w-4 shrink-0" aria-hidden="true" />
+              )}
               {copied ? t.ui.contact.copied : t.ui.contact.copyEmail}
             </button>
           </div>
@@ -97,7 +117,9 @@ export const Contact: React.FC = () => {
           </div>
 
           <div className="flex flex-col justify-between md:items-end md:text-right">
-            <p>© {new Date().getFullYear()} {name}. {t.ui.footer.rights}</p>
+            <p>
+              © {new Date().getFullYear()} {name}. {t.ui.footer.rights}
+            </p>
             <a
               href="#profile"
               className="mt-2 inline-flex min-h-[44px] items-center font-semibold text-acid underline decoration-acid/50 underline-offset-4 hover:text-fg"
